@@ -14,7 +14,7 @@ HC-CDSS ingests a patient FHIR ID, fans out across 5 specialized AI agents via G
 
 ![HC-CDSS Architecture](docs/assets/hc-cdss-architecture.svg)
 
-The system is organized into five layers. Layer 1 (Entry) handles the ADK Web Server, CDSS Root Agent, service account auth, and config. Layer 2 (Pub/Sub Bus) provides 5 topics coordinating all inter-agent messaging. Layer 3 (Specialist Agents) runs Patient Context, Diagnosis, Protocol Lookup, Drug Interaction, and Orchestrator agents. Layer 4 (Data Plane) covers FHIR R4, Vertex AI Search, Gemini 2.0 Flash, Cloud DLP, RxNorm, and GCS. Layer 5 (Persistence and Audit) handles Firestore, BigQuery, Cloud Logging, KMS, and the Audit Agent.
+The system is organized into five layers. Layer 1 (Entry) handles the ADK Web Server, CDSS Root Agent, service account auth, and config. Layer 2 (Pub/Sub Bus) provides 5 topics coordinating all inter-agent messaging. Layer 3 (Specialist Agents) runs Patient Context, Diagnosis, Protocol Lookup, Drug Interaction, and Orchestrator agents. Layer 4 (Data Plane) covers FHIR R4, Vertex AI Search, Gemini 2.5 Flash, Cloud DLP, RxNorm, and GCS. Layer 5 (Persistence and Audit) handles Firestore, BigQuery, Cloud Logging, KMS, and the Audit Agent.
 
 ![HC-CDSS Pipeline](docs/assets/hc-cdss-pipeline.svg)
 
@@ -25,7 +25,7 @@ The system is organized into five layers. Layer 1 (Entry) handles the ADK Web Se
 | Service | Purpose | Resource Name |
 |---|---|---|
 | Google ADK | Multi-agent orchestration framework | cdss_agent |
-| Gemini 2.0 Flash 001 | Differential diagnosis + clinical synthesis | gemini-2.0-flash-001 |
+| Gemini 2.5 Flash | Differential diagnosis + clinical synthesis | gemini-2.5-flash |
 | Vertex AI | LLM API backend | us-central1-aiplatform.googleapis.com |
 | Cloud Healthcare API (FHIR R4) | Patient record storage and retrieval | cdss-dataset / cdss-fhir-store |
 | Vertex AI Search | Clinical protocol retrieval (RAG) | cds-clinical-protocols / cds-protocols-ds2 |
@@ -139,7 +139,7 @@ COPD + Pneumonia presentation. Protocol matched. Parallel Step 2 visible. 0 aler
 
 ### Patient 8: Charlotte Blandy · Uterine Atony (PPH)
 
-Postpartum hemorrhage case. Verbose STEP labels in ADK output. DLC protocol matched. 0 drug alerts. DLP 0 transformations (no PHI in generated summary text).
+Postpartum hemorrhage case. Verbose STEP labels in ADK output. DLP 0 transformations. 0 drug alerts. DLP 0 transformations (no PHI in generated summary text).
 
 | ADK Trace | Final Summary |
 |---|---|
@@ -246,7 +246,7 @@ BQ_DATASET=cdss_audit
 BQ_AUDIT_TABLE=audit_events
 BQ_SESSIONS_TABLE=clinical_summaries
 GOOGLE_APPLICATION_CREDENTIALS=sa-key.json
-GEMINI_MODEL=gemini-2.0-flash-001
+GEMINI_MODEL=gemini-2.5-flash
 VERTEX_AI_SEARCH_ENGINE_ID=cds-clinical-protocols
 ```
 
@@ -293,9 +293,9 @@ Decoupling, replay, and observability. Each agent can be independently restarted
 The regional endpoint (`us-central1`) returned 404 for all queries in this configuration. The `global` endpoint resolved correctly. When in doubt, always use `global` with Discovery Engine.
 
 **Why `consecutive_timeouts` in the audit agent?**
-Pub/Sub returns 504 on empty queues rather than an empty response. Without a termination condition, the audit agent would poll indefinitely. Two consecutive timeouts reliably indicates the queue is drained.
+Pub/Sub returns 504 on empty queues rather than an empty response. Without a termination condition, the audit agent would poll indefinitely. Three consecutive timeouts reliably indicates the queue is drained.
 
-**Why pin `gemini-2.0-flash-001` instead of `gemini-2.0-flash`?**
+**Why pin `gemini-2.5-flash` instead of an unversioned alias?**
 Unversioned model aliases can silently shift when Google updates them. Pinning the exact version prevents unexpected behavioral changes in production.
 
 ---
@@ -305,7 +305,6 @@ Unversioned model aliases can silently shift when Google updates them. Pinning t
 | Item | Status | Notes |
 |---|---|---|
 | RxNorm 404s | Pending | RxCUI codes in synthetic data need correction. Local rule engine fires as fallback. |
-| Diagnosis agent SDK | Pending | Uses deprecated `vertexai.GenerativeModel`. Migrate to `google.genai` before June 24 2026. |
 | Named DLP templates | Pending | Currently uses inline DLP config. Named templates would make config versioned and auditable. |
 | Secret Manager | Pending | `sa-key.json` loaded directly. Replace with Secret Manager + KMS. |
 | Protocol corpus | Pending | 3 documents loaded. PE, Stroke, DKA, COPD, PPH, Febrile Seizure, ALF protocols needed. |

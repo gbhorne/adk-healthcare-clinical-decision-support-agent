@@ -42,9 +42,9 @@ No, they operate at different levels. ADK is the conversational orchestration la
 
 ---
 
-**Q: Why `gemini-2.0-flash-001` specifically? Why not a more capable model?**
+**Q: Why `gemini-2.5-flash` specifically? Why not a more capable model?**
 
-Speed and cost. Clinical decision support at this stage is more about reasoning quality per token than raw capability. Gemini 2.0 Flash 001 generates coherent differential diagnoses and well-structured clinical summaries in 5-8 seconds. A more capable model would increase latency significantly for marginal quality gain on structured medical reasoning tasks. The model is pinned to `gemini-2.0-flash-001` rather than the unversioned alias `gemini-2.0-flash`; always pin versions in production to avoid breaking changes when Google updates the alias.
+Speed and cost. Clinical decision support at this stage is more about reasoning quality per token than raw capability. Gemini 2.5 Flash generates coherent differential diagnoses and well-structured clinical summaries in 5-8 seconds. A more capable model would increase latency significantly for marginal quality gain on structured medical reasoning tasks. The model is pinned to `gemini-2.5-flash` rather than an unversioned or older alias; always pin versions in production to avoid breaking changes when Google updates the alias.
 
 ---
 
@@ -136,7 +136,7 @@ No, it's by design. There are exactly 5 audit event publishes in the pipeline: o
 
 **Q: What does "5 events processed and 15 failed" mean in the early Diane Okafor run?**
 
-That was before the `consecutive_timeouts` fix was applied. The audit agent was pulling in batches of 20. It successfully processed 5 real events, then hit the empty queue and received 504 Deadline Exceeded responses 15 more times before the batch of 20 completed. Each 504 was logged as a "failed" event. After the fix (stop after 2 consecutive timeouts), the agent correctly exits after the queue is drained.
+That was before the `consecutive_timeouts` fix was applied. The audit agent was pulling in batches of 20. It successfully processed 5 real events, then hit the empty queue and received 504 Deadline Exceeded responses 15 more times before the batch of 20 completed. Each 504 was logged as a "failed" event. After the fix (stop after 3 consecutive timeouts), the agent correctly exits after the queue is drained.
 
 ---
 
@@ -148,9 +148,9 @@ The Orchestrator was initialized with the `vertexai` SDK, which requires a diffe
 
 ---
 
-**Q: The diagnosis agent still shows a deprecation warning on every run. How urgent is this?**
+**Q: The diagnosis agent previously showed a deprecation warning. Has that been fixed?**
 
-The deprecation warning is from `vertexai.generative_models._generative_models`. The feature was deprecated June 24 2025 and will be removed June 24 2026, approximately 3.5 months from the current build date. The fix is straightforward: replace the `vertexai.GenerativeModel` instantiation and `generate_content` call pattern with the equivalent `google.genai.Client` pattern, the same as was done for the Orchestrator. It's non-urgent today but needs to land before the removal deadline.
+Yes, as of the March 2026 code review. The diagnosis agent has been migrated from `vertexai.generative_models.GenerativeModel` to the `vertexai` SDK's `GenerativeModel` with `GenerationConfig`, which is consistent with current ADK patterns and no longer generates the deprecation warning. The Orchestrator continues to use the `google.genai.Client` pattern with `vertexai=True`; both are valid approaches for Vertex AI-backed inference.
 
 ---
 

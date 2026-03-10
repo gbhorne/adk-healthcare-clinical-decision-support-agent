@@ -106,7 +106,7 @@ class GCPConfig:
         default_factory=lambda: os.getenv("SUB_DRUG_INTERACTION_AGENT", "drug-interaction-agent-sub")
     )
     # FIX M1 — Drug interaction agent subscribes to patient-context-ready
-    # so it can use the PatientSnapshot instead of re-querying FHIR
+    # to receive the PatientSnapshot and forward it to the Orchestrator
     sub_drug_interaction_patient_context: str = field(
         default_factory=lambda: os.getenv(
             "SUB_DRUG_INTERACTION_PATIENT_CONTEXT", "drug-interaction-patient-context-sub"
@@ -118,7 +118,7 @@ class GCPConfig:
     sub_orchestrator_diagnosis: str = field(
         default_factory=lambda: os.getenv("SUB_ORCHESTRATOR_DIAGNOSIS", "orchestrator-diagnosis-sub")
     )
-    # FIX C3a: NEW — orchestrator now subscribes to protocols-ready topic
+    # FIX C3a: orchestrator subscribes to protocols-ready topic
     sub_orchestrator_protocols: str = field(
         default_factory=lambda: os.getenv("SUB_ORCHESTRATOR_PROTOCOLS", "orchestrator-protocols-sub")
     )

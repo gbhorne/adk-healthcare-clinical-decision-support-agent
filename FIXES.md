@@ -171,7 +171,7 @@ into `CDSSummary` separately after DLP completes.
 ### F-AUDIT1 — Consecutive timeout limit raised from 2 to 3
 **File:** `agents/audit/agent.py` — `process_audit_events()`  
 **Issue:** The audit loop stopped after 2 consecutive Pub/Sub pull timeouts. A single
-brief network blip causing 2 sequential failures would abandon the entire remaining
+brief network blip causing 2 sequential failures would abandon the remaining
 audit queue — a serious gap for HIPAA audit completeness.  
 **Fix:** Limit raised to 3 consecutive timeouts before stopping.
 
