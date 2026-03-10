@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" font-family="'Courier New', Courier, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080d1a"/><stop offset="100%" style="stop-color:#0c1525"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#00ff9d"/></marker>
+    <marker id="arrO" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f5a623"/></marker>
+    <marker id="arrP" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#c084fc"/></marker>
+    <marker id="arrR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#fb7185"/></marker>
+  </defs>
+  <rect width="1600" height="520" fill="url(#bg)"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="12" width="1560" height="56" rx="5" fill="#0a1228" stroke="#00ff9d" stroke-width="1.2"/>
+  <text x="800" y="38" text-anchor="middle" fill="#00ff9d" font-size="18" font-weight="bold" letter-spacing="4" filter="url(#glow)">LAYERS 2 &amp; 3 — PUB/SUB MESSAGE BUS &amp; SPECIALIST AGENTS</text>
+  <text x="800" y="60" text-anchor="middle" fill="#38a870" font-size="13" letter-spacing="2">Session-isolated Pub/Sub topics  ·  Pub/Sub pull timeout: 45s  ·  DLP at 3 intercept points</text>
+
+  <!-- PubSub bus -->
+  <rect x="20" y="88" width="1560" height="62" rx="5" fill="#150e00" stroke="#f5a623" stroke-width="1.5"/>
+  <text x="800" y="112" text-anchor="middle" fill="#f5a623" font-size="16" font-weight="bold" letter-spacing="4">GOOGLE CLOUD PUB/SUB</text>
+
+  <!-- Topics -->
+  <rect x="34" y="124" width="230" height="20" rx="3" fill="#f5a623" opacity="0.1" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="149" y="139" text-anchor="middle" fill="#fbbf24" font-size="13">patient-context-ready</text>
+
+  <rect x="278" y="124" width="196" height="20" rx="3" fill="#f5a623" opacity="0.1" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="376" y="139" text-anchor="middle" fill="#fbbf24" font-size="13">diagnosis-ready</text>
+
+  <rect x="488" y="124" width="196" height="20" rx="3" fill="#f5a623" opacity="0.1" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="586" y="139" text-anchor="middle" fill="#fbbf24" font-size="13">protocols-ready</text>
+
+  <rect x="698" y="124" width="240" height="20" rx="3" fill="#f5a623" opacity="0.1" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="818" y="139" text-anchor="middle" fill="#fbbf24" font-size="13">drug-interactions-ready</text>
+
+  <rect x="952" y="124" width="176" height="20" rx="3" fill="#f5a623" opacity="0.1" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="1040" y="139" text-anchor="middle" fill="#fbbf24" font-size="13">audit-events</text>
+
+  <rect x="1142" y="124" width="220" height="20" rx="3" fill="#f87171" opacity="0.12" stroke="#f87171" stroke-width="0.8"/>
+  <text x="1252" y="139" text-anchor="middle" fill="#f87171" font-size="13">Cloud DLP (3 moments)</text>
+
+  <!-- Step labels -->
+  <text x="149" y="172" text-anchor="middle" fill="#00ff9d" font-size="12" opacity="0.6">STEP 1</text>
+  <text x="450" y="168" text-anchor="middle" fill="#00ff9d" font-size="12" opacity="0.6">STEP 2 — PARALLEL</text>
+  <text x="818" y="168" text-anchor="middle" fill="#00ff9d" font-size="12" opacity="0.6">STEP 2 — PARALLEL</text>
+  <text x="1100" y="172" text-anchor="middle" fill="#00ff9d" font-size="12" opacity="0.6">STEP 3</text>
+  <text x="1370" y="172" text-anchor="middle" fill="#f5a623" font-size="12" opacity="0.6">STEP 4</text>
+
+  <!-- PubSub → Agent arrows -->
+  <line x1="149" y1="150" x2="149" y2="185" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+  <line x1="450" y1="150" x2="450" y2="185" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+  <line x1="818" y1="150" x2="818" y2="185" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+  <line x1="1100" y1="150" x2="1100" y2="185" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+  <line x1="1370" y1="150" x2="1370" y2="185" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+
+  <!-- Agent publish-back arrows (dashed up) -->
+  <line x1="137" y1="185" x2="137" y2="150" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrP)"/>
+  <line x1="438" y1="185" x2="438" y2="150" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrP)"/>
+  <line x1="806" y1="185" x2="806" y2="150" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrP)"/>
+  <line x1="1088" y1="185" x2="1088" y2="150" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrP)"/>
+  <line x1="1358" y1="185" x2="1358" y2="150" stroke="#c084fc" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrP)"/>
+
+  <!-- Patient Context Agent -->
+  <rect x="20" y="185" width="258" height="300" rx="5" fill="#041a10" stroke="#00ff9d" stroke-width="1.6"/>
+  <rect x="20" y="185" width="258" height="32" rx="5" fill="#00ff9d" opacity="0.1"/>
+  <text x="149" y="208" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">PATIENT CONTEXT</text>
+  <text x="149" y="238" text-anchor="middle" fill="#3aba78" font-size="13">patient_context/agent.py</text>
+  <text x="149" y="264" text-anchor="middle" fill="#1a5e38" font-size="13">FHIR $everything query</text>
+  <text x="149" y="286" text-anchor="middle" fill="#1a5e38" font-size="13">Extracts: conditions, meds,</text>
+  <text x="149" y="306" text-anchor="middle" fill="#1a5e38" font-size="13">allergies, labs, vitals</text>
+  <text x="149" y="330" text-anchor="middle" fill="#f87171" font-size="14" font-weight="bold">DLP MOMENT 1</text>
+  <text x="149" y="352" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: patient-context-ready</text>
+  <text x="149" y="374" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: audit-events</text>
+  <text x="149" y="396" text-anchor="middle" fill="#0f3d22" font-size="12">timeout: 45s</text>
+  <text x="149" y="470" fill="#0f3d22" font-size="12"> </text>
+
+  <!-- Diagnosis Agent -->
+  <rect x="290" y="185" width="320" height="300" rx="5" fill="#041a10" stroke="#00ff9d" stroke-width="1.6"/>
+  <rect x="290" y="185" width="320" height="32" rx="5" fill="#00ff9d" opacity="0.1"/>
+  <text x="450" y="208" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">DIAGNOSIS AGENT</text>
+  <text x="450" y="238" text-anchor="middle" fill="#3aba78" font-size="13">diagnosis/agent.py</text>
+  <text x="450" y="264" text-anchor="middle" fill="#1a5e38" font-size="13">Pulls: diagnosis-agent-sub</text>
+  <text x="450" y="286" text-anchor="middle" fill="#1a5e38" font-size="13">Gemini differential diagnosis</text>
+  <text x="450" y="306" text-anchor="middle" fill="#1a5e38" font-size="13">Ranked Dx list + ICD-10 codes</text>
+  <text x="450" y="326" text-anchor="middle" fill="#1a5e38" font-size="13">PHI stripped from prompt</text>
+  <text x="450" y="350" text-anchor="middle" fill="#f87171" font-size="14" font-weight="bold">DLP MOMENT 2</text>
+  <text x="450" y="372" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: diagnosis-ready</text>
+  <text x="450" y="394" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: audit-events</text>
+  <text x="450" y="416" text-anchor="middle" fill="#0f3d22" font-size="12">timeout: 45s</text>
+
+  <!-- Protocol Lookup Agent -->
+  <rect x="624" y="185" width="388" height="300" rx="5" fill="#041a10" stroke="#00ff9d" stroke-width="1.6"/>
+  <rect x="624" y="185" width="388" height="32" rx="5" fill="#00ff9d" opacity="0.1"/>
+  <text x="818" y="208" text-anchor="middle" fill="#00ff9d" font-size="14" font-weight="bold">PROTOCOL LOOKUP AGENT</text>
+  <text x="818" y="238" text-anchor="middle" fill="#3aba78" font-size="13">protocol_lookup/agent.py</text>
+  <text x="818" y="264" text-anchor="middle" fill="#1a5e38" font-size="13">Vertex AI Search — global endpoint</text>
+  <text x="818" y="286" text-anchor="middle" fill="#1a5e38" font-size="13">Engine: cds-clinical-protocols</text>
+  <text x="818" y="306" text-anchor="middle" fill="#1a5e38" font-size="13">10 protocol documents in corpus</text>
+  <text x="818" y="326" text-anchor="middle" fill="#1a5e38" font-size="13">3–4 semantic queries per patient</text>
+  <text x="818" y="346" text-anchor="middle" fill="#1a5e38" font-size="13">Named DLP templates supported</text>
+  <text x="818" y="370" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: protocols-ready</text>
+  <text x="818" y="392" text-anchor="middle" fill="#1a5e38" font-size="13">Pub: audit-events</text>
+  <text x="818" y="416" text-anchor="middle" fill="#0f3d22" font-size="12">timeout: 45s</text>
+
+  <!-- Drug Interaction Agent -->
+  <rect x="1024" y="185" width="152" height="300" rx="5" fill="#041a10" stroke="#00ff9d" stroke-width="1.6"/>
+  <rect x="1024" y="185" width="152" height="32" rx="5" fill="#00ff9d" opacity="0.1"/>
+  <text x="1100" y="208" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">DRUG</text>
+  <text x="1100" y="226" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">INTERACTION</text>
+  <text x="1100" y="256" text-anchor="middle" fill="#3aba78" font-size="12">drug_interaction</text>
+  <text x="1100" y="272" text-anchor="middle" fill="#3aba78" font-size="12">/agent.py</text>
+  <text x="1100" y="298" text-anchor="middle" fill="#1a5e38" font-size="12">RxNorm API</text>
+  <text x="1100" y="318" text-anchor="middle" fill="#1a5e38" font-size="12">Allergy check</text>
+  <text x="1100" y="338" text-anchor="middle" fill="#1a5e38" font-size="12">K⁺ ≥ 5.5 mEq/L</text>
+  <text x="1100" y="358" text-anchor="middle" fill="#1a5e38" font-size="12">Contraindication</text>
+  <text x="1100" y="376" text-anchor="middle" fill="#1a5e38" font-size="12">PatientSnapshot</text>
+  <text x="1100" y="398" text-anchor="middle" fill="#1a5e38" font-size="12">→ drug-inter...</text>
+  <text x="1100" y="416" text-anchor="middle" fill="#0f3d22" font-size="11">timeout: 45s</text>
+
+  <!-- Orchestrator Agent -->
+  <rect x="1192" y="185" width="234" height="300" rx="5" fill="#150a00" stroke="#f5a623" stroke-width="2" filter="url(#glow)"/>
+  <rect x="1192" y="185" width="234" height="32" rx="5" fill="#f5a623" opacity="0.12"/>
+  <text x="1309" y="208" text-anchor="middle" fill="#f5a623" font-size="14" font-weight="bold">ORCHESTRATOR</text>
+  <text x="1309" y="238" text-anchor="middle" fill="#fbbf24" font-size="13">orchestrator/agent.py</text>
+  <text x="1309" y="264" text-anchor="middle" fill="#7a4400" font-size="13">google.genai SDK</text>
+  <text x="1309" y="286" text-anchor="middle" fill="#7a4400" font-size="13">Pulls 3 subscriptions</text>
+  <text x="1309" y="306" text-anchor="middle" fill="#7a4400" font-size="13">Gemini CDSSummary</text>
+  <text x="1309" y="330" text-anchor="middle" fill="#f87171" font-size="14" font-weight="bold">DLP MOMENT 3</text>
+  <text x="1309" y="352" text-anchor="middle" fill="#7a4400" font-size="13">→ Firestore</text>
+  <text x="1309" y="374" text-anchor="middle" fill="#7a4400" font-size="13">→ BigQuery</text>
+  <text x="1309" y="396" text-anchor="middle" fill="#7a4400" font-size="13">→ audit-events</text>
+  <text x="1309" y="418" text-anchor="middle" fill="#f5a623" font-size="12">timeout: 45s</text>
+
+  <!-- Audit Agent (right edge) -->
+  <rect x="1442" y="185" width="138" height="300" rx="5" fill="#120600" stroke="#fb7185" stroke-width="1.4"/>
+  <rect x="1442" y="185" width="138" height="32" rx="5" fill="#fb7185" opacity="0.1"/>
+  <text x="1511" y="208" text-anchor="middle" fill="#fb7185" font-size="13" font-weight="bold">AUDIT</text>
+  <text x="1511" y="226" text-anchor="middle" fill="#fb7185" font-size="13" font-weight="bold">AGENT</text>
+  <text x="1511" y="256" text-anchor="middle" fill="#f9a8b4" font-size="12">audit/agent.py</text>
+  <text x="1511" y="278" text-anchor="middle" fill="#7a1a28" font-size="12">Batch: 20</text>
+  <text x="1511" y="298" text-anchor="middle" fill="#7a1a28" font-size="12">Timeout: ≤ 3</text>
+  <text x="1511" y="316" text-anchor="middle" fill="#7a1a28" font-size="12">5 events/session</text>
+  <text x="1511" y="338" text-anchor="middle" fill="#7a1a28" font-size="12">→ Cloud Log</text>
+  <text x="1511" y="358" text-anchor="middle" fill="#7a1a28" font-size="12">→ BigQuery</text>
+  <text x="1511" y="380" text-anchor="middle" fill="#fb7185" font-size="11">STEP 5</text>
+
+  <!-- Legend -->
+  <rect x="20" y="498" width="1560" height="16" rx="3" fill="#08101e"/>
+  <line x1="36" y1="507" x2="60" y2="507" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+  <text x="68" y="511" fill="#3a5060" font-size="11">PubSub route</text>
+  <line x1="170" y1="507" x2="194" y2="507" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrP)"/>
+  <text x="202" y="511" fill="#3a5060" font-size="11">Publish-back</text>
+  <text x="800" y="511" text-anchor="middle" fill="#1a2535" font-size="11">2 of 4  ·  github.com/gbhorne/adk-healthcare-clinical-decision-support-agent</text>
+</svg>

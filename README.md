@@ -12,7 +12,13 @@ HC-CDSS ingests a patient FHIR ID, fans out across 5 specialized AI agents via G
 
 ## System Architecture
 
-<img src="docs/assets/hc-cdss-architecture.svg" alt="HC-CDSS Architecture" width="100%"/>
+<img src="docs/assets/diagram-1-entry.svg" alt="Layer 1 — Entry and Auth" width="100%"/>
+
+<img src="docs/assets/diagram-2-agents.svg" alt="Layers 2 and 3 — PubSub and Specialist Agents" width="100%"/>
+
+<img src="docs/assets/diagram-3-data.svg" alt="Layer 4 — Data Plane" width="100%"/>
+
+<img src="docs/assets/diagram-4-persistence.svg" alt="Layer 5 — Persistence and Audit" width="100%"/>
 
 The system is organized into five layers. Layer 1 (Entry) handles the ADK Web Server, CDSS Root Agent, service account auth, and config. Layer 2 (Pub/Sub Bus) provides 5 topics coordinating all inter-agent messaging. Layer 3 (Specialist Agents) runs Patient Context, Diagnosis, Protocol Lookup, Drug Interaction, and Orchestrator agents. Layer 4 (Data Plane) covers FHIR R4, Vertex AI Search, Gemini 2.5 Flash, Cloud DLP, RxNorm, and GCS. Layer 5 (Persistence and Audit) handles Firestore, BigQuery, Cloud Logging, KMS, and the Audit Agent.
 
@@ -194,7 +200,12 @@ hc-cdss/
 │   └── synthetic/                # 10 synthetic FHIR patient bundles (R4 JSON)
 ├── docs/
 │   └── assets/
-│       ├── hc-cdss-architecture.svg   # Full system architecture diagram
+│       ├── diagram-1-entry.svg         # Layer 1 — Entry and Auth
+│       ├── diagram-2-agents.svg         # Layers 2+3 — PubSub and Specialist Agents
+│       ├── diagram-3-data.svg           # Layer 4 — Data Plane
+│       ├── diagram-4-persistence.svg    # Layer 5 — Persistence and Audit
+│       ├── hc-cdss-architecture.svg     # Legacy full-system diagram (reference)
+│       ├── hc-cdss-pipeline.svg         # Pipeline execution overview
 │       └── screenshots/               # ADK Dev UI pipeline run evidence (all 10 patients)
 ├── requirements.txt
 ├── .env.example

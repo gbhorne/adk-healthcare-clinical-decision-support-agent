@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 460" font-family="'Courier New', Courier, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080d1a"/><stop offset="100%" style="stop-color:#0c1525"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#00d4ff"/></marker>
+  </defs>
+  <rect width="1600" height="460" fill="url(#bg)"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="12" width="1560" height="56" rx="5" fill="#0a1228" stroke="#00d4ff" stroke-width="1.2"/>
+  <text x="800" y="38" text-anchor="middle" fill="#00d4ff" font-size="18" font-weight="bold" letter-spacing="4" filter="url(#glow)">LAYER 1 — ENTRY &amp; AUTHENTICATION</text>
+  <text x="800" y="60" text-anchor="middle" fill="#4a9cc4" font-size="13" letter-spacing="2">HC-CDSS  ·  Google Cloud ADK  ·  Vertex AI  ·  gemini-2.5-flash</text>
+
+  <!-- ADK Web Server -->
+  <rect x="20" y="92" width="290" height="340" rx="6" fill="#0b1a33" stroke="#00d4ff" stroke-width="1.8"/>
+  <rect x="20" y="92" width="290" height="36" rx="6" fill="#00d4ff" opacity="0.12"/>
+  <text x="165" y="118" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold" letter-spacing="2">ADK WEB SERVER</text>
+  <text x="165" y="156" text-anchor="middle" fill="#7dd3fc" font-size="14">adk web</text>
+  <text x="165" y="182" text-anchor="middle" fill="#3a6a90" font-size="14">Port 8000</text>
+  <text x="165" y="208" text-anchor="middle" fill="#3a6a90" font-size="14">Uvicorn / FastAPI</text>
+  <text x="165" y="234" text-anchor="middle" fill="#3a6a90" font-size="14">InMemoryCredentialService</text>
+  <text x="165" y="260" text-anchor="middle" fill="#3a6a90" font-size="14">Session: SQLite (.adk/)</text>
+  <text x="165" y="286" text-anchor="middle" fill="#3a6a90" font-size="14">Cloud Run: python:3.14</text>
+  <text x="165" y="312" text-anchor="middle" fill="#3a6a90" font-size="14">Dockerfile in repo root</text>
+  <text x="165" y="338" text-anchor="middle" fill="#2a5070" font-size="13">http://127.0.0.1:8000</text>
+  <text x="165" y="362" text-anchor="middle" fill="#2a5070" font-size="13"> </text>
+
+  <!-- Arrow ADK → Root Agent -->
+  <line x1="310" y1="262" x2="348" y2="262" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="329" y="254" text-anchor="middle" fill="#00d4ff" font-size="12">invoke</text>
+
+  <!-- CDSS Root Agent -->
+  <rect x="350" y="92" width="330" height="340" rx="6" fill="#0b1a33" stroke="#00d4ff" stroke-width="2.2" filter="url(#glow)"/>
+  <rect x="350" y="92" width="330" height="36" rx="6" fill="#00d4ff" opacity="0.15"/>
+  <text x="515" y="118" text-anchor="middle" fill="#00d4ff" font-size="16" font-weight="bold" letter-spacing="2">CDSS ROOT AGENT</text>
+  <text x="515" y="156" text-anchor="middle" fill="#7dd3fc" font-size="14">cdss_agent / agent.py</text>
+  <text x="515" y="182" text-anchor="middle" fill="#3a6a90" font-size="14">Model: gemini-2.5-flash</text>
+  <text x="515" y="208" text-anchor="middle" fill="#3a6a90" font-size="14">Backend: Vertex AI</text>
+  <text x="515" y="234" text-anchor="middle" fill="#3a6a90" font-size="14">Region: us-central1</text>
+  <text x="515" y="260" text-anchor="middle" fill="#3a6a90" font-size="14">SDK: google.genai</text>
+  <text x="515" y="286" text-anchor="middle" fill="#3a6a90" font-size="14">ADK framework orchestrator</text>
+  <text x="515" y="312" text-anchor="middle" fill="#3a6a90" font-size="14">config.validate() at import</text>
+  <text x="515" y="338" text-anchor="middle" fill="#3a6a90" font-size="14">5 tool calls per session</text>
+  <text x="515" y="362" text-anchor="middle" fill="#2a5070" font-size="13"> </text>
+
+  <!-- Config & Auth -->
+  <rect x="710" y="92" width="280" height="340" rx="6" fill="#0b1a33" stroke="#334155" stroke-width="1.4"/>
+  <rect x="710" y="92" width="280" height="36" rx="6" fill="#334155" opacity="0.4"/>
+  <text x="850" y="118" text-anchor="middle" fill="#8090a8" font-size="16" font-weight="bold" letter-spacing="2">CONFIG &amp; AUTH</text>
+  <text x="850" y="156" text-anchor="middle" fill="#506678" font-size="14">GCP_PROJECT_ID</text>
+  <text x="850" y="180" text-anchor="middle" fill="#506678" font-size="14">GCP_LOCATION: us-central1</text>
+  <text x="850" y="204" text-anchor="middle" fill="#506678" font-size="14">GEMINI_MODEL: gemini-2.5-flash</text>
+  <text x="850" y="228" text-anchor="middle" fill="#506678" font-size="14">VERTEX_AI_SEARCH_ENGINE_ID</text>
+  <text x="850" y="252" text-anchor="middle" fill="#506678" font-size="14">GOOGLE_APPLICATION_CREDENTIALS</text>
+  <text x="850" y="276" text-anchor="middle" fill="#506678" font-size="14">SA: cdss-sa@...</text>
+  <text x="850" y="300" text-anchor="middle" fill="#506678" font-size="14">DLP_INSPECT_TEMPLATE</text>
+  <text x="850" y="324" text-anchor="middle" fill="#506678" font-size="14">DLP_DEIDENTIFY_TEMPLATE</text>
+  <text x="850" y="348" text-anchor="middle" fill="#3a5068" font-size="13">scripts/validate.py</text>
+  <text x="850" y="370" text-anchor="middle" fill="#3a5068" font-size="13"> </text>
+
+  <!-- IAM Roles -->
+  <rect x="1020" y="92" width="270" height="340" rx="6" fill="#0b1a33" stroke="#334155" stroke-width="1.4"/>
+  <rect x="1020" y="92" width="270" height="36" rx="6" fill="#334155" opacity="0.4"/>
+  <text x="1155" y="118" text-anchor="middle" fill="#8090a8" font-size="16" font-weight="bold" letter-spacing="2">IAM ROLES</text>
+  <text x="1155" y="156" text-anchor="middle" fill="#506678" font-size="14">healthcare.fhirResourceEditor</text>
+  <text x="1155" y="180" text-anchor="middle" fill="#506678" font-size="14">bigquery.dataEditor</text>
+  <text x="1155" y="204" text-anchor="middle" fill="#506678" font-size="14">pubsub.publisher</text>
+  <text x="1155" y="228" text-anchor="middle" fill="#506678" font-size="14">pubsub.subscriber</text>
+  <text x="1155" y="252" text-anchor="middle" fill="#506678" font-size="14">dlp.user</text>
+  <text x="1155" y="276" text-anchor="middle" fill="#506678" font-size="14">datastore.user</text>
+  <text x="1155" y="300" text-anchor="middle" fill="#506678" font-size="14">cloudkms.cryptoKeyEncrypterDecrypter</text>
+  <text x="1155" y="348" text-anchor="middle" fill="#3a5068" font-size="13"> </text>
+
+  <!-- Secret Manager -->
+  <rect x="1320" y="92" width="260" height="340" rx="6" fill="#0b1a33" stroke="#334155" stroke-width="1.4"/>
+  <rect x="1320" y="92" width="260" height="36" rx="6" fill="#334155" opacity="0.4"/>
+  <text x="1450" y="118" text-anchor="middle" fill="#8090a8" font-size="16" font-weight="bold" letter-spacing="2">SECRET MANAGER</text>
+  <text x="1450" y="156" text-anchor="middle" fill="#506678" font-size="14">cdss-kms-key-name</text>
+  <text x="1450" y="180" text-anchor="middle" fill="#506678" font-size="14">cdss-gemini-model</text>
+  <text x="1450" y="204" text-anchor="middle" fill="#506678" font-size="14">cdss-search-engine-id</text>
+  <text x="1450" y="228" text-anchor="middle" fill="#506678" font-size="14">Provisioned via:</text>
+  <text x="1450" y="252" text-anchor="middle" fill="#506678" font-size="14">setup_secret_manager.py</text>
+  <text x="1450" y="276" text-anchor="middle" fill="#506678" font-size="14">Cloud Run: attach SA</text>
+  <text x="1450" y="300" text-anchor="middle" fill="#506678" font-size="14">via --service-account flag</text>
+  <text x="1450" y="324" text-anchor="middle" fill="#506678" font-size="14">No credentials file needed</text>
+  <text x="1450" y="370" text-anchor="middle" fill="#3a5068" font-size="13"> </text>
+
+  <!-- Footer -->
+  <text x="800" y="448" text-anchor="middle" fill="#1a2535" font-size="12">1 of 4  ·  github.com/gbhorne/adk-healthcare-clinical-decision-support-agent</text>
+</svg>

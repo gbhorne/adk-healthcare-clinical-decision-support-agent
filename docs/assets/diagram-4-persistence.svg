@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" font-family="'Courier New', Courier, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080d1a"/><stop offset="100%" style="stop-color:#0c1525"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#fb7185"/></marker>
+  </defs>
+  <rect width="1600" height="480" fill="url(#bg)"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="12" width="1560" height="56" rx="5" fill="#0a1228" stroke="#fb7185" stroke-width="1.2"/>
+  <text x="800" y="38" text-anchor="middle" fill="#fb7185" font-size="18" font-weight="bold" letter-spacing="4" filter="url(#glow)">LAYER 5 — PERSISTENCE, AUDIT &amp; COMPLIANCE</text>
+  <text x="800" y="60" text-anchor="middle" fill="#a0404e" font-size="13" letter-spacing="2">HIPAA-grade audit trail  ·  DLP-pseudonymized storage  ·  BigQuery analytics</text>
+
+  <!-- Orchestrator "source" box (left) -->
+  <rect x="20" y="92" width="220" height="350" rx="5" fill="#150a00" stroke="#f5a623" stroke-width="1.6"/>
+  <rect x="20" y="92" width="220" height="32" rx="5" fill="#f5a623" opacity="0.12"/>
+  <text x="130" y="115" text-anchor="middle" fill="#f5a623" font-size="14" font-weight="bold">ORCHESTRATOR</text>
+  <text x="130" y="150" text-anchor="middle" fill="#7a4400" font-size="14">Writes per session:</text>
+  <text x="130" y="176" text-anchor="middle" fill="#7a4400" font-size="14">CDSSummary doc</text>
+  <text x="130" y="200" text-anchor="middle" fill="#7a4400" font-size="14">top_diagnosis</text>
+  <text x="130" y="224" text-anchor="middle" fill="#7a4400" font-size="14">all_diagnoses</text>
+  <text x="130" y="248" text-anchor="middle" fill="#7a4400" font-size="14">protocols_matched</text>
+  <text x="130" y="272" text-anchor="middle" fill="#7a4400" font-size="14">alert_count</text>
+  <text x="130" y="296" text-anchor="middle" fill="#7a4400" font-size="14">has_critical_alerts</text>
+  <text x="130" y="320" text-anchor="middle" fill="#7a4400" font-size="14">clinical_summary_text</text>
+  <text x="130" y="344" text-anchor="middle" fill="#7a4400" font-size="14">DLP-pseudonymized</text>
+  <text x="130" y="368" text-anchor="middle" fill="#7a4400" font-size="14">firestore_path</text>
+  <text x="130" y="396" text-anchor="middle" fill="#f5a623" font-size="12">STEP 4</text>
+
+  <!-- Arrow → Firestore -->
+  <line x1="240" y1="200" x2="298" y2="200" stroke="#fb7185" stroke-width="1.8" marker-end="url(#arrR)" stroke-dasharray="6,3"/>
+
+  <!-- Arrow → BigQuery -->
+  <line x1="240" y1="250" x2="298" y2="340" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arrR)" stroke-dasharray="6,3"/>
+
+  <!-- Firestore -->
+  <rect x="300" y="92" width="330" height="350" rx="5" fill="#0a140a" stroke="#fb7185" stroke-width="1.8" filter="url(#glow)"/>
+  <rect x="300" y="92" width="330" height="32" rx="5" fill="#fb7185" opacity="0.12"/>
+  <text x="465" y="115" text-anchor="middle" fill="#fb7185" font-size="16" font-weight="bold">FIRESTORE</text>
+  <text x="465" y="152" text-anchor="middle" fill="#fda4af" font-size="14">Collection: cds_sessions/</text>
+  <text x="465" y="178" text-anchor="middle" fill="#7a1228" font-size="14">One CDSSummary per session</text>
+  <text x="465" y="202" text-anchor="middle" fill="#7a1228" font-size="14">Document ID: session_id</text>
+  <text x="465" y="226" text-anchor="middle" fill="#7a1228" font-size="14">Fields: session_id · patient_id</text>
+  <text x="465" y="250" text-anchor="middle" fill="#7a1228" font-size="14">top_diagnosis · protocols</text>
+  <text x="465" y="274" text-anchor="middle" fill="#7a1228" font-size="14">alerts · clinical_summary</text>
+  <text x="465" y="298" text-anchor="middle" fill="#7a1228" font-size="14">DLP-pseudonymized text</text>
+  <text x="465" y="322" text-anchor="middle" fill="#7a1228" font-size="14">dlp_phi_types detected</text>
+  <text x="465" y="346" text-anchor="middle" fill="#7a1228" font-size="14">Written by: Orchestrator</text>
+  <text x="465" y="370" text-anchor="middle" fill="#7a1228" font-size="14">10 sessions written ✓</text>
+  <text x="465" y="398" text-anchor="middle" fill="#5a0a18" font-size="13">Primary clinical record store</text>
+  <text x="465" y="420" text-anchor="middle" fill="#5a0a18" font-size="13"> </text>
+
+  <!-- BigQuery -->
+  <rect x="650" y="92" width="330" height="350" rx="5" fill="#0a140a" stroke="#fb7185" stroke-width="1.6"/>
+  <rect x="650" y="92" width="330" height="32" rx="5" fill="#fb7185" opacity="0.12"/>
+  <text x="815" y="115" text-anchor="middle" fill="#fb7185" font-size="16" font-weight="bold">BIGQUERY</text>
+  <text x="815" y="152" text-anchor="middle" fill="#fda4af" font-size="14">Dataset: cdss_audit</text>
+  <text x="815" y="180" text-anchor="middle" fill="#7a1228" font-size="14">Table: audit_events</text>
+  <text x="815" y="202" text-anchor="middle" fill="#7a1228" font-size="13">  session_id · agent_name</text>
+  <text x="815" y="222" text-anchor="middle" fill="#7a1228" font-size="13">  event_type · timestamp</text>
+  <text x="815" y="242" text-anchor="middle" fill="#7a1228" font-size="13">  status · duration_ms</text>
+  <text x="815" y="262" text-anchor="middle" fill="#7a1228" font-size="13">  dlp_transformations</text>
+  <text x="815" y="286" text-anchor="middle" fill="#7a1228" font-size="14">Table: clinical_summaries</text>
+  <text x="815" y="308" text-anchor="middle" fill="#7a1228" font-size="13">  top_diagnosis · alert_count</text>
+  <text x="815" y="328" text-anchor="middle" fill="#7a1228" font-size="13">  protocols_matched</text>
+  <text x="815" y="348" text-anchor="middle" fill="#7a1228" font-size="13">  has_critical_alerts</text>
+  <text x="815" y="368" text-anchor="middle" fill="#7a1228" font-size="14">Partitioned by timestamp</text>
+  <text x="815" y="392" text-anchor="middle" fill="#5a0a18" font-size="13">50 total events (5 per session)</text>
+  <text x="815" y="412" text-anchor="middle" fill="#5a0a18" font-size="13">Written by: Orchestrator + Audit</text>
+
+  <!-- Audit Agent "source" box -->
+  <rect x="1000" y="92" width="230" height="350" rx="5" fill="#120600" stroke="#fb7185" stroke-width="1.6"/>
+  <rect x="1000" y="92" width="230" height="32" rx="5" fill="#fb7185" opacity="0.1"/>
+  <text x="1115" y="115" text-anchor="middle" fill="#fb7185" font-size="14" font-weight="bold">AUDIT AGENT</text>
+  <text x="1115" y="152" text-anchor="middle" fill="#f9a8b4" font-size="14">audit/agent.py</text>
+  <text x="1115" y="178" text-anchor="middle" fill="#7a1a28" font-size="14">Pulls: audit-agent-sub</text>
+  <text x="1115" y="202" text-anchor="middle" fill="#7a1a28" font-size="14">Batch size: 20</text>
+  <text x="1115" y="226" text-anchor="middle" fill="#7a1a28" font-size="14">Stops after 3 consecutive</text>
+  <text x="1115" y="246" text-anchor="middle" fill="#7a1a28" font-size="14">504 Deadline Exceeded</text>
+  <text x="1115" y="270" text-anchor="middle" fill="#7a1a28" font-size="14">5 events per session</text>
+  <text x="1115" y="294" text-anchor="middle" fill="#7a1a28" font-size="14">Processes: 1 per agent</text>
+  <text x="1115" y="318" text-anchor="middle" fill="#7a1a28" font-size="14">Patient Context · Diagnosis</text>
+  <text x="1115" y="338" text-anchor="middle" fill="#7a1a28" font-size="14">Protocol · Drug · Orchestrator</text>
+  <text x="1115" y="362" text-anchor="middle" fill="#7a1a28" font-size="14">Audit flush: ~8-12s</text>
+  <text x="1115" y="390" text-anchor="middle" fill="#fb7185" font-size="12">STEP 5 — AUDIT FLUSH</text>
+
+  <!-- Arrows Audit Agent → BigQuery + Cloud Logging -->
+  <line x1="1230" y1="220" x2="1298" y2="220" stroke="#fb7185" stroke-width="1.8" marker-end="url(#arrR)"/>
+  <line x1="1230" y1="300" x2="1298" y2="350" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arrR)" stroke-dasharray="5,3"/>
+
+  <!-- Cloud Logging -->
+  <rect x="1300" y="92" width="280" height="350" rx="5" fill="#0a140a" stroke="#fb7185" stroke-width="1.6"/>
+  <rect x="1300" y="92" width="280" height="32" rx="5" fill="#fb7185" opacity="0.12"/>
+  <text x="1440" y="115" text-anchor="middle" fill="#fb7185" font-size="16" font-weight="bold">CLOUD LOGGING</text>
+  <text x="1440" y="152" text-anchor="middle" fill="#fda4af" font-size="14">Log name: cds-audit-trail</text>
+  <text x="1440" y="178" text-anchor="middle" fill="#7a1228" font-size="14">Structured log entries</text>
+  <text x="1440" y="202" text-anchor="middle" fill="#7a1228" font-size="14">Per-agent event records</text>
+  <text x="1440" y="226" text-anchor="middle" fill="#7a1228" font-size="14">session_id · agent_name</text>
+  <text x="1440" y="250" text-anchor="middle" fill="#7a1228" font-size="14">timestamp · status</text>
+  <text x="1440" y="274" text-anchor="middle" fill="#7a1228" font-size="14">event_type · metadata</text>
+  <text x="1440" y="298" text-anchor="middle" fill="#7a1228" font-size="14">50 entries per demo run</text>
+  <text x="1440" y="322" text-anchor="middle" fill="#7a1228" font-size="14">Queryable via Log Explorer</text>
+  <text x="1440" y="346" text-anchor="middle" fill="#7a1228" font-size="14">Written by: Audit Agent</text>
+  <text x="1440" y="370" text-anchor="middle" fill="#7a1228" font-size="14">Complements BigQuery</text>
+  <text x="1440" y="394" text-anchor="middle" fill="#5a0a18" font-size="13">HIPAA-grade audit trail</text>
+  <text x="1440" y="416" text-anchor="middle" fill="#5a0a18" font-size="13"> </text>
+
+  <!-- Footer -->
+  <text x="800" y="468" text-anchor="middle" fill="#1a2535" font-size="12">4 of 4  ·  github.com/gbhorne/adk-healthcare-clinical-decision-support-agent</text>
+</svg>

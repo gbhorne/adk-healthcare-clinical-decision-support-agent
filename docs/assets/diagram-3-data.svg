@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" font-family="'Courier New', Courier, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080d1a"/><stop offset="100%" style="stop-color:#0c1525"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="480" fill="url(#bg)"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="12" width="1560" height="56" rx="5" fill="#0a1228" stroke="#c084fc" stroke-width="1.2"/>
+  <text x="800" y="38" text-anchor="middle" fill="#c084fc" font-size="18" font-weight="bold" letter-spacing="4" filter="url(#glow)">LAYER 4 — DATA PLANE</text>
+  <text x="800" y="60" text-anchor="middle" fill="#7a5aa8" font-size="13" letter-spacing="2">External services accessed by the specialist agents during pipeline execution</text>
+
+  <!-- FHIR R4 Store -->
+  <rect x="20" y="92" width="270" height="350" rx="5" fill="#110820" stroke="#c084fc" stroke-width="1.6"/>
+  <rect x="20" y="92" width="270" height="32" rx="5" fill="#c084fc" opacity="0.1"/>
+  <text x="155" y="115" text-anchor="middle" fill="#c084fc" font-size="15" font-weight="bold">FHIR R4 STORE</text>
+  <text x="155" y="148" text-anchor="middle" fill="#a78bfa" font-size="14">Cloud Healthcare API</text>
+  <text x="155" y="172" text-anchor="middle" fill="#4a2a80" font-size="14">cdss-dataset</text>
+  <text x="155" y="194" text-anchor="middle" fill="#4a2a80" font-size="14">cdss-fhir-store</text>
+  <text x="155" y="220" text-anchor="middle" fill="#4a2a80" font-size="14">10 synthetic patients</text>
+  <text x="155" y="244" text-anchor="middle" fill="#4a2a80" font-size="14">Patient · Condition</text>
+  <text x="155" y="266" text-anchor="middle" fill="#4a2a80" font-size="14">MedicationRequest</text>
+  <text x="155" y="288" text-anchor="middle" fill="#4a2a80" font-size="14">AllergyIntolerance</text>
+  <text x="155" y="310" text-anchor="middle" fill="#4a2a80" font-size="14">Observation (labs/vitals)</text>
+  <text x="155" y="332" text-anchor="middle" fill="#4a2a80" font-size="14">Encounter</text>
+  <text x="155" y="358" text-anchor="middle" fill="#3a1a68" font-size="13">$everything op · us-central1</text>
+  <text x="155" y="378" text-anchor="middle" fill="#3a1a68" font-size="13">scripts/load_fhir_patients.py</text>
+  <text x="155" y="398" text-anchor="middle" fill="#3a1a68" font-size="13">Upsert: POST + PUT fallback</text>
+  <text x="155" y="418" text-anchor="middle" fill="#3a1a68" font-size="13"> </text>
+
+  <!-- Vertex AI Search -->
+  <rect x="310" y="92" width="280" height="350" rx="5" fill="#110820" stroke="#c084fc" stroke-width="1.6"/>
+  <rect x="310" y="92" width="280" height="32" rx="5" fill="#c084fc" opacity="0.1"/>
+  <text x="450" y="115" text-anchor="middle" fill="#c084fc" font-size="15" font-weight="bold">VERTEX AI SEARCH</text>
+  <text x="450" y="148" text-anchor="middle" fill="#a78bfa" font-size="14">Discovery Engine API</text>
+  <text x="450" y="172" text-anchor="middle" fill="#4a2a80" font-size="14">cds-clinical-protocols</text>
+  <text x="450" y="194" text-anchor="middle" fill="#4a2a80" font-size="14">Data store: cds-protocols-ds2</text>
+  <text x="450" y="218" text-anchor="middle" fill="#4a2a80" font-size="14">Global endpoint (required)</text>
+  <text x="450" y="244" text-anchor="middle" fill="#4a2a80" font-size="13">Sepsis (SSC 2021)</text>
+  <text x="450" y="264" text-anchor="middle" fill="#4a2a80" font-size="13">NSTEMI (ACC/AHA)</text>
+  <text x="450" y="284" text-anchor="middle" fill="#4a2a80" font-size="13">CKD+DM (KDIGO/ADA 2022)</text>
+  <text x="450" y="304" text-anchor="middle" fill="#4a2a80" font-size="13">PE (ESC 2019)</text>
+  <text x="450" y="322" text-anchor="middle" fill="#4a2a80" font-size="13">Stroke (AHA/ASA 2019)</text>
+  <text x="450" y="340" text-anchor="middle" fill="#4a2a80" font-size="13">DKA (ADA) · COPD (GOLD 2023)</text>
+  <text x="450" y="358" text-anchor="middle" fill="#4a2a80" font-size="13">PPH (ACOG) · ALF (AASLD)</text>
+  <text x="450" y="376" text-anchor="middle" fill="#4a2a80" font-size="13">Febrile Seizure (AAP 2011)</text>
+  <text x="450" y="398" text-anchor="middle" fill="#3a1a68" font-size="13">scripts/setup_vertex_search.py</text>
+  <text x="450" y="420" text-anchor="middle" fill="#3a1a68" font-size="13"> </text>
+
+  <!-- Vertex AI / Gemini -->
+  <rect x="610" y="92" width="280" height="350" rx="5" fill="#110820" stroke="#c084fc" stroke-width="1.6"/>
+  <rect x="610" y="92" width="280" height="32" rx="5" fill="#c084fc" opacity="0.1"/>
+  <text x="750" y="115" text-anchor="middle" fill="#c084fc" font-size="15" font-weight="bold">VERTEX AI / GEMINI</text>
+  <text x="750" y="148" text-anchor="middle" fill="#a78bfa" font-size="14">Generative AI Service</text>
+  <text x="750" y="172" text-anchor="middle" fill="#4a2a80" font-size="14">gemini-2.5-flash</text>
+  <text x="750" y="196" text-anchor="middle" fill="#4a2a80" font-size="14">Region: us-central1</text>
+  <text x="750" y="220" text-anchor="middle" fill="#4a2a80" font-size="14">Diagnosis Agent: google.genai</text>
+  <text x="750" y="244" text-anchor="middle" fill="#4a2a80" font-size="14">Orchestrator: google.genai</text>
+  <text x="750" y="268" text-anchor="middle" fill="#4a2a80" font-size="14">GOOGLE_GENAI_USE_VERTEXAI=true</text>
+  <text x="750" y="292" text-anchor="middle" fill="#4a2a80" font-size="14">AFC: max 10 remote calls</text>
+  <text x="750" y="316" text-anchor="middle" fill="#4a2a80" font-size="14">Endpoint: v1beta1/generateContent</text>
+  <text x="750" y="340" text-anchor="middle" fill="#4a2a80" font-size="14">6–8s inference (diagnosis)</text>
+  <text x="750" y="364" text-anchor="middle" fill="#4a2a80" font-size="14">3–4s synthesis (orchestrator)</text>
+  <text x="750" y="388" text-anchor="middle" fill="#3a1a68" font-size="13">Project: healthcare-sa-489715</text>
+  <text x="750" y="412" text-anchor="middle" fill="#3a1a68" font-size="13"> </text>
+
+  <!-- Cloud DLP -->
+  <rect x="910" y="92" width="280" height="350" rx="5" fill="#1a0606" stroke="#f87171" stroke-width="1.6"/>
+  <rect x="910" y="92" width="280" height="32" rx="5" fill="#f87171" opacity="0.1"/>
+  <text x="1050" y="115" text-anchor="middle" fill="#f87171" font-size="15" font-weight="bold">CLOUD DLP</text>
+  <text x="1050" y="148" text-anchor="middle" fill="#fca5a5" font-size="14">Data Loss Prevention API</text>
+  <text x="1050" y="172" text-anchor="middle" fill="#7a1a1a" font-size="14">Moment 1 — FHIR scan</text>
+  <text x="1050" y="194" text-anchor="middle" fill="#7a1a1a" font-size="14">Moment 2 — Dx output scrub</text>
+  <text x="1050" y="216" text-anchor="middle" fill="#7a1a1a" font-size="14">Moment 3 — Summary gate</text>
+  <text x="1050" y="240" text-anchor="middle" fill="#7a1a1a" font-size="14">Info types: PERSON_NAME, AGE</text>
+  <text x="1050" y="262" text-anchor="middle" fill="#7a1a1a" font-size="14">PHONE_NUMBER, EMAIL_ADDRESS</text>
+  <text x="1050" y="286" text-anchor="middle" fill="#7a1a1a" font-size="14">STREET_ADDRESS, DATE_OF_BIRTH</text>
+  <text x="1050" y="308" text-anchor="middle" fill="#7a1a1a" font-size="14">Full path: CryptoReplaceFfxFpe</text>
+  <text x="1050" y="330" text-anchor="middle" fill="#7a1a1a" font-size="14">KMS key: cdss-keyring/cdss-key</text>
+  <text x="1050" y="352" text-anchor="middle" fill="#7a1a1a" font-size="14">Fallback: replace_with_info_type</text>
+  <text x="1050" y="374" text-anchor="middle" fill="#7a1a1a" font-size="14">patient_id excluded from DLP</text>
+  <text x="1050" y="398" text-anchor="middle" fill="#6a1212" font-size="13">setup_dlp_templates.py</text>
+  <text x="1050" y="418" text-anchor="middle" fill="#6a1212" font-size="13"> </text>
+
+  <!-- RxNorm API -->
+  <rect x="1210" y="92" width="185" height="160" rx="5" fill="#110820" stroke="#fbbf24" stroke-width="1.2"/>
+  <rect x="1210" y="92" width="185" height="32" rx="5" fill="#fbbf24" opacity="0.08"/>
+  <text x="1302" y="115" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="bold">RXNORM</text>
+  <text x="1302" y="150" text-anchor="middle" fill="#a78000" font-size="13">rxnav.nlm.nih.gov</text>
+  <text x="1302" y="172" text-anchor="middle" fill="#7a5400" font-size="13">Verified RxCUIs</text>
+  <text x="1302" y="192" text-anchor="middle" fill="#7a5400" font-size="13">All 10 patients</text>
+  <text x="1302" y="212" text-anchor="middle" fill="#7a5400" font-size="13">Local rules fallback</text>
+  <text x="1302" y="230" text-anchor="middle" fill="#7a5400" font-size="13"> </text>
+
+  <!-- GCS Bucket -->
+  <rect x="1210" y="268" width="185" height="174" rx="5" fill="#110820" stroke="#c084fc" stroke-width="1.2"/>
+  <rect x="1210" y="268" width="185" height="32" rx="5" fill="#c084fc" opacity="0.08"/>
+  <text x="1302" y="291" text-anchor="middle" fill="#c084fc" font-size="15" font-weight="bold">GCS</text>
+  <text x="1302" y="326" text-anchor="middle" fill="#4a2a80" font-size="13">cdss-data-</text>
+  <text x="1302" y="346" text-anchor="middle" fill="#4a2a80" font-size="13">{PROJECT_ID}</text>
+  <text x="1302" y="368" text-anchor="middle" fill="#4a2a80" font-size="13">Protocol staging</text>
+  <text x="1302" y="390" text-anchor="middle" fill="#4a2a80" font-size="13">KMS encrypted</text>
+  <text x="1302" y="412" text-anchor="middle" fill="#4a2a80" font-size="13"> </text>
+
+  <!-- Cloud KMS -->
+  <rect x="1415" y="92" width="165" height="350" rx="5" fill="#0c1208" stroke="#64748b" stroke-width="1.2"/>
+  <rect x="1415" y="92" width="165" height="32" rx="5" fill="#64748b" opacity="0.1"/>
+  <text x="1497" y="115" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="bold">CLOUD KMS</text>
+  <text x="1497" y="152" text-anchor="middle" fill="#3a5060" font-size="13">cdss-keyring</text>
+  <text x="1497" y="174" text-anchor="middle" fill="#3a5060" font-size="13">cdss-key</text>
+  <text x="1497" y="196" text-anchor="middle" fill="#3a5060" font-size="13">us-central1</text>
+  <text x="1497" y="220" text-anchor="middle" fill="#3a5060" font-size="14">DLP FPE</text>
+  <text x="1497" y="242" text-anchor="middle" fill="#3a5060" font-size="14">encryption</text>
+  <text x="1497" y="266" text-anchor="middle" fill="#3a5060" font-size="13">GCS at-rest</text>
+  <text x="1497" y="288" text-anchor="middle" fill="#3a5060" font-size="13">encryption</text>
+  <text x="1497" y="316" text-anchor="middle" fill="#283848" font-size="13">Migrated to</text>
+  <text x="1497" y="336" text-anchor="middle" fill="#283848" font-size="13">Secret Manager</text>
+  <text x="1497" y="358" text-anchor="middle" fill="#283848" font-size="13">via setup_</text>
+  <text x="1497" y="378" text-anchor="middle" fill="#283848" font-size="13">secret_manager</text>
+  <text x="1497" y="398" text-anchor="middle" fill="#283848" font-size="13">.py</text>
+
+  <!-- Footer -->
+  <text x="800" y="468" text-anchor="middle" fill="#1a2535" font-size="12">3 of 4  ·  github.com/gbhorne/adk-healthcare-clinical-decision-support-agent</text>
+</svg>
