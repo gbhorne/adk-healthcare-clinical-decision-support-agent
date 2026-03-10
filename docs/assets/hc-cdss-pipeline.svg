@@ -1,151 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 820" font-family="'Segoe UI', Arial, sans-serif">
-
-  <!-- Background -->
-  <rect width="860" height="820" fill="#f8f9fa"/>
-
-  <!-- Title / User Prompt -->
-  <rect x="180" y="20" width="500" height="52" rx="8" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="430" y="40" text-anchor="middle" font-size="11" fill="#1a1a2e" font-weight="600">User Prompt</text>
-  <text x="430" y="57" text-anchor="middle" font-size="10" fill="#444">"Run the CDSS pipeline. Patient FHIR ID is patient-sofia-reyes"</text>
-
-  <!-- Arrow: prompt to ADK -->
-  <line x1="430" y1="72" x2="430" y2="98" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- ADK Web Server box -->
-  <rect x="140" y="98" width="580" height="56" rx="8" fill="#1a1a2e" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="430" y="120" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="600">ADK Web Server  (Uvicorn / FastAPI · http://127.0.0.1:8000)</text>
-  <text x="430" y="140" text-anchor="middle" font-size="10.5" fill="#a8c8f0">cdss_agent — Root Agent  (gemini-2.0-flash-001 · Vertex AI)</text>
-
-  <!-- Arrow: ADK to PubSub -->
-  <line x1="430" y1="154" x2="430" y2="188" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- Pub/Sub box -->
-  <rect x="180" y="188" width="500" height="76" rx="8" fill="#fff3e0" stroke="#f5a623" stroke-width="1.5"/>
-  <text x="430" y="210" text-anchor="middle" font-size="11" fill="#b35c00" font-weight="700" letter-spacing="1">GOOGLE CLOUD PUB/SUB</text>
-  <text x="430" y="228" text-anchor="middle" font-size="10" fill="#6b4400">patient-context-ready · diagnosis-ready · protocols-ready</text>
-  <text x="430" y="244" text-anchor="middle" font-size="10" fill="#6b4400">drug-interactions-ready · audit-events</text>
-
-  <!-- Step labels row -->
-  <text x="108" y="296" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 1</text>
-  <text x="270" y="296" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 2</text>
-  <text x="430" y="296" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 2</text>
-  <text x="590" y="296" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 3</text>
-  <text x="752" y="296" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 4</text>
-  <text x="270" y="308" text-anchor="middle" font-size="9" fill="#aaa">(parallel)</text>
-
-  <!-- Vertical lines from PubSub to agents -->
-  <!-- Step 1 -->
-  <line x1="240" y1="264" x2="108" y2="264" stroke="#f5a623" stroke-width="1.2"/>
-  <line x1="108" y1="264" x2="108" y2="316" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
-  <!-- Step 2a -->
-  <line x1="310" y1="264" x2="270" y2="264" stroke="#f5a623" stroke-width="1.2"/>
-  <line x1="270" y1="264" x2="270" y2="316" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
-  <!-- Step 2b -->
-  <line x1="430" y1="264" x2="430" y2="316" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
-  <!-- Step 3 -->
-  <line x1="540" y1="264" x2="590" y2="264" stroke="#f5a623" stroke-width="1.2"/>
-  <line x1="590" y1="264" x2="590" y2="316" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
-
-  <!-- Agent boxes row -->
-  <!-- Patient Context Agent -->
-  <rect x="44" y="316" width="128" height="76" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="108" y="340" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Patient</text>
-  <text x="108" y="355" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Context</text>
-  <text x="108" y="370" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Agent</text>
-  <text x="108" y="385" text-anchor="middle" font-size="9" fill="#666">FHIR R4</text>
-
-  <!-- Diagnosis Agent -->
-  <rect x="204" y="316" width="132" height="76" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="270" y="340" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Diagnosis</text>
-  <text x="270" y="355" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Agent</text>
-  <text x="270" y="375" text-anchor="middle" font-size="9" fill="#666">(Gemini)</text>
-
-  <!-- Protocol Lookup Agent -->
-  <rect x="364" y="316" width="132" height="76" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="430" y="340" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Protocol</text>
-  <text x="430" y="355" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Lookup</text>
-  <text x="430" y="370" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Agent</text>
-  <text x="430" y="385" text-anchor="middle" font-size="9" fill="#666">(Vtx Search)</text>
-
-  <!-- Drug Interaction Agent -->
-  <rect x="524" y="316" width="132" height="76" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="590" y="340" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Drug</text>
-  <text x="590" y="355" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Interaction</text>
-  <text x="590" y="370" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Agent</text>
-  <text x="590" y="385" text-anchor="middle" font-size="9" fill="#666">RxNorm + FHIR</text>
-
-  <!-- Convergence lines from all 4 agents down to orchestrator -->
-  <line x1="108" y1="392" x2="108" y2="470" stroke="#4a90d9" stroke-width="1.2"/>
-  <line x1="270" y1="392" x2="270" y2="470" stroke="#4a90d9" stroke-width="1.2"/>
-  <line x1="430" y1="392" x2="430" y2="470" stroke="#4a90d9" stroke-width="1.2"/>
-  <line x1="590" y1="392" x2="590" y2="470" stroke="#4a90d9" stroke-width="1.2"/>
-  <!-- Horizontal convergence line -->
-  <line x1="108" y1="470" x2="590" y2="470" stroke="#4a90d9" stroke-width="1.2"/>
-  <!-- Arrow down to orchestrator -->
-  <line x1="349" y1="470" x2="349" y2="504" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
-
-  <!-- STEP 4 label -->
-  <text x="349" y="496" text-anchor="middle" font-size="9.5" fill="#888" font-style="italic">STEP 4</text>
-
-  <!-- Orchestrator Agent -->
-  <rect x="219" y="510" width="260" height="96" rx="7" fill="#1a1a2e" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="349" y="533" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="600">Orchestrator Agent</text>
-  <text x="349" y="550" text-anchor="middle" font-size="10" fill="#a8c8f0">Gemini synthesis</text>
-  <text x="349" y="566" text-anchor="middle" font-size="10" fill="#a8c8f0">DLP Moment 3</text>
-  <text x="349" y="582" text-anchor="middle" font-size="10" fill="#a8c8f0">Firestore · BigQuery</text>
-  <text x="349" y="598" text-anchor="middle" font-size="9" fill="#6a9fd8">STEP 5</text>
-
-  <!-- Step 5 line from Drug Agent to Audit (right side) -->
-  <line x1="752" y1="264" x2="752" y2="630" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="5,4"/>
-  <line x1="752" y1="630" x2="700" y2="630" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
-
-  <!-- Arrow: Orchestrator to Audit -->
-  <line x1="479" y1="558" x2="610" y2="630" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
-
-  <!-- Audit Agent -->
-  <rect x="610" y="600" width="200" height="96" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.5"/>
-  <text x="710" y="628" text-anchor="middle" font-size="11" fill="#1a1a2e" font-weight="600">Audit Agent</text>
-  <text x="710" y="648" text-anchor="middle" font-size="10" fill="#444">Cloud Logging</text>
-  <text x="710" y="664" text-anchor="middle" font-size="10" fill="#444">BigQuery</text>
-  <text x="710" y="680" text-anchor="middle" font-size="10" fill="#444">audit_log</text>
-  <text x="710" y="692" text-anchor="middle" font-size="9" fill="#888">STEP 5</text>
-
-  <!-- Persistence row boxes -->
-  <!-- Firestore -->
-  <rect x="80" y="660" width="130" height="60" rx="6" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.5"/>
-  <text x="145" y="685" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">Firestore</text>
-  <text x="145" y="702" text-anchor="middle" font-size="9.5" fill="#388e3c">cds_sessions/</text>
-  <text x="145" y="714" text-anchor="middle" font-size="9" fill="#555">CDSSummary docs</text>
-
-  <!-- BigQuery -->
-  <rect x="230" y="660" width="150" height="60" rx="6" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.5"/>
-  <text x="305" y="685" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">BigQuery</text>
-  <text x="305" y="702" text-anchor="middle" font-size="9.5" fill="#388e3c">cdss_audit</text>
-  <text x="305" y="714" text-anchor="middle" font-size="9" fill="#555">audit_events · summaries</text>
-
-  <!-- Cloud Logging -->
-  <rect x="400" y="660" width="140" height="60" rx="6" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.5"/>
-  <text x="470" y="685" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">Cloud Logging</text>
-  <text x="470" y="702" text-anchor="middle" font-size="9.5" fill="#388e3c">cds-audit-trail</text>
-  <text x="470" y="714" text-anchor="middle" font-size="9" fill="#555">Structured audit trail</text>
-
-  <!-- Arrows from Orchestrator to persistence -->
-  <line x1="280" y1="606" x2="145" y2="660" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
-  <line x1="349" y1="606" x2="305" y2="660" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
-  <line x1="400" y1="606" x2="470" y2="660" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
-
-  <!-- Legend -->
-  <rect x="44" y="754" width="572" height="48" rx="6" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
-  <line x1="60" y1="778" x2="90" y2="778" stroke="#4a90d9" stroke-width="2"/>
-  <text x="96" y="782" font-size="9.5" fill="#444">Agent flow</text>
-  <line x1="160" y1="778" x2="190" y2="778" stroke="#f5a623" stroke-width="2"/>
-  <text x="196" y="782" font-size="9.5" fill="#444">Pub/Sub routing</text>
-  <line x1="290" y1="778" x2="320" y2="778" stroke="#f5a623" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="326" y="782" font-size="9.5" fill="#444">Async / Step 5 path</text>
-  <line x1="430" y1="778" x2="460" y2="778" stroke="#4caf50" stroke-width="2"/>
-  <text x="466" y="782" font-size="9.5" fill="#444">Persistence write</text>
-
-  <!-- Arrowhead markers -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" font-family="'Segoe UI', Arial, sans-serif">
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L0,6 L8,3 z" fill="#555"/>
@@ -159,6 +12,158 @@
     <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L0,6 L8,3 z" fill="#4caf50"/>
     </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#e05555"/>
+    </marker>
   </defs>
 
+  <!-- Background -->
+  <rect width="1000" height="680" fill="#f8f9fa" rx="6"/>
+  <rect width="1000" height="680" fill="none" stroke="#dde3ea" stroke-width="1" rx="6"/>
+
+  <!-- ── Title / User Prompt ── -->
+  <rect x="200" y="18" width="600" height="48" rx="7" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="500" y="38" text-anchor="middle" font-size="11" fill="#1a1a2e" font-weight="600">User Prompt</text>
+  <text x="500" y="56" text-anchor="middle" font-size="10" fill="#444">"Run the CDSS pipeline. Patient FHIR ID is patient-marcus-webb"</text>
+
+  <!-- Arrow prompt → ADK -->
+  <line x1="500" y1="66" x2="500" y2="90" stroke="#555" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- ── ADK Web Server ── -->
+  <rect x="160" y="90" width="680" height="54" rx="7" fill="#1a1a2e" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="500" y="112" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">ADK Web Server  (Uvicorn / FastAPI · http://127.0.0.1:8000)</text>
+  <text x="500" y="132" text-anchor="middle" font-size="10.5" fill="#a8c8f0">cdss_agent — Root Agent  ·  gemini-2.5-flash  ·  Vertex AI (us-central1)</text>
+
+  <!-- Arrow ADK → PubSub -->
+  <line x1="500" y1="144" x2="500" y2="172" stroke="#555" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- ── Pub/Sub ── -->
+  <rect x="200" y="172" width="600" height="72" rx="7" fill="#fff8ee" stroke="#f5a623" stroke-width="1.4"/>
+  <text x="500" y="194" text-anchor="middle" font-size="11" fill="#b35c00" font-weight="700" letter-spacing="1">GOOGLE CLOUD PUB/SUB</text>
+  <text x="500" y="212" text-anchor="middle" font-size="10" fill="#6b4400">patient-context-ready · diagnosis-ready · protocols-ready</text>
+  <text x="500" y="228" text-anchor="middle" font-size="10" fill="#6b4400">drug-interactions-ready · audit-events</text>
+
+  <!-- Step labels above agent boxes -->
+  <text x="116" y="276" text-anchor="middle" font-size="9.5" fill="#777" font-style="italic">STEP 1</text>
+  <text x="295" y="270" text-anchor="middle" font-size="9.5" fill="#777" font-style="italic">STEP 2</text>
+  <text x="295" y="282" text-anchor="middle" font-size="9" fill="#aaa">(parallel)</text>
+  <text x="500" y="270" text-anchor="middle" font-size="9.5" fill="#777" font-style="italic">STEP 2</text>
+  <text x="500" y="282" text-anchor="middle" font-size="9" fill="#aaa">(parallel)</text>
+  <text x="695" y="276" text-anchor="middle" font-size="9.5" fill="#777" font-style="italic">STEP 3</text>
+  <text x="878" y="276" text-anchor="middle" font-size="9.5" fill="#f5a623" font-style="italic">STEP 4</text>
+
+  <!-- Fan-out lines PubSub → agents -->
+  <line x1="270" y1="244" x2="116" y2="244" stroke="#f5a623" stroke-width="1.2"/>
+  <line x1="116" y1="244" x2="116" y2="292" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
+
+  <line x1="340" y1="244" x2="295" y2="244" stroke="#f5a623" stroke-width="1.2"/>
+  <line x1="295" y1="244" x2="295" y2="292" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
+
+  <line x1="500" y1="244" x2="500" y2="292" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
+
+  <line x1="620" y1="244" x2="695" y2="244" stroke="#f5a623" stroke-width="1.2"/>
+  <line x1="695" y1="244" x2="695" y2="292" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
+
+  <!-- ── Agent boxes row ── -->
+  <!-- Patient Context -->
+  <rect x="52" y="292" width="128" height="86" rx="6" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="116" y="315" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Patient</text>
+  <text x="116" y="330" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Context Agent</text>
+  <text x="116" y="349" text-anchor="middle" font-size="9.5" fill="#555">FHIR R4</text>
+  <text x="116" y="364" text-anchor="middle" font-size="9" fill="#888">DLP Moment 1</text>
+  <text x="116" y="374" text-anchor="middle" font-size="9" fill="#888"> </text>
+
+  <!-- Diagnosis -->
+  <rect x="227" y="292" width="136" height="86" rx="6" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="295" y="315" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Diagnosis</text>
+  <text x="295" y="330" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Agent</text>
+  <text x="295" y="349" text-anchor="middle" font-size="9.5" fill="#555">Gemini 2.5 Flash</text>
+  <text x="295" y="364" text-anchor="middle" font-size="9" fill="#888">DLP Moment 2</text>
+  <text x="295" y="374" text-anchor="middle" font-size="9" fill="#888"> </text>
+
+  <!-- Protocol Lookup -->
+  <rect x="428" y="292" width="144" height="86" rx="6" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="500" y="315" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Protocol</text>
+  <text x="500" y="330" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Lookup Agent</text>
+  <text x="500" y="349" text-anchor="middle" font-size="9.5" fill="#555">Vertex AI Search</text>
+  <text x="500" y="364" text-anchor="middle" font-size="9" fill="#888">10 protocols</text>
+  <text x="500" y="374" text-anchor="middle" font-size="9" fill="#888"> </text>
+
+  <!-- Drug Interaction -->
+  <rect x="626" y="292" width="138" height="86" rx="6" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="695" y="315" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Drug</text>
+  <text x="695" y="330" text-anchor="middle" font-size="10.5" fill="#1a1a2e" font-weight="600">Interaction Agent</text>
+  <text x="695" y="349" text-anchor="middle" font-size="9.5" fill="#555">RxNorm + FHIR</text>
+  <text x="695" y="364" text-anchor="middle" font-size="9" fill="#888">Allergy / K⁺ checks</text>
+  <text x="695" y="374" text-anchor="middle" font-size="9" fill="#888"> </text>
+
+  <!-- Convergence lines → Orchestrator -->
+  <line x1="116" y1="378" x2="116" y2="442" stroke="#4a90d9" stroke-width="1.2"/>
+  <line x1="295" y1="378" x2="295" y2="442" stroke="#4a90d9" stroke-width="1.2"/>
+  <line x1="500" y1="378" x2="500" y2="442" stroke="#4a90d9" stroke-width="1.2"/>
+  <line x1="695" y1="378" x2="695" y2="442" stroke="#4a90d9" stroke-width="1.2"/>
+  <line x1="116" y1="442" x2="695" y2="442" stroke="#4a90d9" stroke-width="1.2"/>
+  <line x1="405" y1="442" x2="405" y2="472" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- ── Orchestrator ── -->
+  <rect x="248" y="472" width="316" height="94" rx="6" fill="#1a1a2e" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="406" y="494" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">Orchestrator Agent  (Step 4)</text>
+  <text x="406" y="512" text-anchor="middle" font-size="10" fill="#a8c8f0">Gemini 2.5 Flash synthesis · google.genai SDK</text>
+  <text x="406" y="529" text-anchor="middle" font-size="10" fill="#a8c8f0">DLP Moment 3 · Firestore · BigQuery</text>
+  <text x="406" y="546" text-anchor="middle" font-size="10" fill="#a8c8f0">CDSSummary → cds_sessions/{session_id}</text>
+  <text x="406" y="562" text-anchor="middle" font-size="9.5" fill="#6a9fd8">audit-events →</text>
+
+  <!-- Audit Agent (right) -->
+  <line x1="878" y1="244" x2="878" y2="586" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="878" y1="586" x2="812" y2="586" stroke="#f5a623" stroke-width="1.2" marker-end="url(#arrowOrange)"/>
+
+  <!-- Orchestrator → Audit arrow -->
+  <line x1="564" y1="526" x2="720" y2="586" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- ── Audit Agent ── -->
+  <rect x="718" y="556" width="218" height="98" rx="6" fill="#e8f4fd" stroke="#4a90d9" stroke-width="1.4"/>
+  <text x="827" y="578" text-anchor="middle" font-size="11" fill="#1a1a2e" font-weight="600">Audit Agent  (Step 5)</text>
+  <text x="827" y="596" text-anchor="middle" font-size="10" fill="#444">consecutive_timeouts ≤ 3</text>
+  <text x="827" y="612" text-anchor="middle" font-size="10" fill="#444">5 events per session</text>
+  <text x="827" y="628" text-anchor="middle" fill="#e05555" font-size="9.5">→ Cloud Logging · BigQuery</text>
+  <text x="827" y="642" text-anchor="middle" font-size="9" fill="#888"> </text>
+
+  <!-- ── Persistence row ── -->
+  <line x1="316" y1="566" x2="130" y2="614" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+  <line x1="406" y1="566" x2="310" y2="614" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+  <line x1="480" y1="566" x2="490" y2="614" stroke="#4caf50" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+
+  <!-- Firestore -->
+  <rect x="60" y="614" width="152" height="52" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.4"/>
+  <text x="136" y="636" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">Firestore</text>
+  <text x="136" y="652" text-anchor="middle" font-size="9.5" fill="#388e3c">cds_sessions/</text>
+  <text x="136" y="662" text-anchor="middle" font-size="9" fill="#555">CDSSummary docs</text>
+
+  <!-- BigQuery -->
+  <rect x="232" y="614" width="160" height="52" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.4"/>
+  <text x="312" y="636" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">BigQuery</text>
+  <text x="312" y="652" text-anchor="middle" font-size="9.5" fill="#388e3c">cdss_audit</text>
+  <text x="312" y="662" text-anchor="middle" font-size="9" fill="#555">audit_events · summaries</text>
+
+  <!-- Cloud Logging -->
+  <rect x="412" y="614" width="160" height="52" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.4"/>
+  <text x="492" y="636" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="600">Cloud Logging</text>
+  <text x="492" y="652" text-anchor="middle" font-size="9.5" fill="#388e3c">cds-audit-trail</text>
+  <text x="492" y="662" text-anchor="middle" font-size="9" fill="#555">Structured audit trail</text>
+
+  <!-- Audit Agent → persistence -->
+  <line x1="756" y1="654" x2="620" y2="654" stroke="#e05555" stroke-width="1.2" marker-end="url(#arrowRed)"/>
+
+  <!-- ── Legend ── -->
+  <rect x="52" y="648" width="580" height="24" rx="4" fill="#fff" stroke="#dde3ea" stroke-width="1"/>
+  <line x1="68" y1="660" x2="92" y2="660" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="98" y="664" font-size="9.5" fill="#555">Agent flow</text>
+  <line x1="160" y1="660" x2="184" y2="660" stroke="#f5a623" stroke-width="1.8"/>
+  <text x="190" y="664" font-size="9.5" fill="#555">Pub/Sub routing</text>
+  <line x1="276" y1="660" x2="300" y2="660" stroke="#f5a623" stroke-width="1.8" stroke-dasharray="4,3"/>
+  <text x="306" y="664" font-size="9.5" fill="#555">Async / audit path</text>
+  <line x1="400" y1="660" x2="424" y2="660" stroke="#4caf50" stroke-width="1.8"/>
+  <text x="430" y="664" font-size="9.5" fill="#555">Persistence write</text>
+  <line x1="510" y1="660" x2="534" y2="660" stroke="#e05555" stroke-width="1.8"/>
+  <text x="540" y="664" font-size="9.5" fill="#555">Audit write</text>
 </svg>

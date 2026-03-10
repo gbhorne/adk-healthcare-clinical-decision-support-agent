@@ -12,11 +12,11 @@ HC-CDSS ingests a patient FHIR ID, fans out across 5 specialized AI agents via G
 
 ## System Architecture
 
-![HC-CDSS Architecture](docs/assets/hc-cdss-architecture.svg)
+<img src="docs/assets/hc-cdss-architecture.svg" alt="HC-CDSS Architecture" width="100%"/>
 
 The system is organized into five layers. Layer 1 (Entry) handles the ADK Web Server, CDSS Root Agent, service account auth, and config. Layer 2 (Pub/Sub Bus) provides 5 topics coordinating all inter-agent messaging. Layer 3 (Specialist Agents) runs Patient Context, Diagnosis, Protocol Lookup, Drug Interaction, and Orchestrator agents. Layer 4 (Data Plane) covers FHIR R4, Vertex AI Search, Gemini 2.5 Flash, Cloud DLP, RxNorm, and GCS. Layer 5 (Persistence and Audit) handles Firestore, BigQuery, Cloud Logging, KMS, and the Audit Agent.
 
-![HC-CDSS Pipeline](docs/assets/hc-cdss-pipeline.svg)
+<img src="docs/assets/hc-cdss-pipeline.svg" alt="HC-CDSS Pipeline" width="100%"/>
 
 ---
 
