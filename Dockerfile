@@ -27,7 +27,7 @@
 #       metadata server. Run scripts/setup_secret_manager.py to migrate
 #       remaining secrets before deploying.
 
-FROM python:3.11-slim
+FROM python:3.14-slim
 
 WORKDIR /app
 

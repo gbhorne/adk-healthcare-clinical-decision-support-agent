@@ -26,13 +26,13 @@ Every message published to Pub/Sub includes a `session_id` field in its attribut
 
 **Q: Why does Step 2 run diagnosis and protocol lookup in parallel?**
 
-They're independent operations. The Diagnosis Agent needs the patient context (from Step 1) but doesn't need protocol results. The Protocol Lookup Agent similarly only needs the patient context to build its queries. Running them in parallel saves roughly 10-15 seconds per pipeline execution. The Orchestrator pulls both results before synthesizing and waits for whichever takes longer.
+They're independent operations. The Diagnosis Agent needs the patient context (from Step 1) but doesn't need protocol results. The Protocol Lookup Agent similarly only needs the patient context to build its queries. Running them in parallel saves roughly 2-5 seconds per pipeline execution (the saving is bounded by the shorter of the two tasks — protocol lookup at 1.5-2.5s — since Gemini diagnosis at 6-8s dominates either way). The Orchestrator pulls both results before synthesizing and waits for whichever takes longer.
 
 ---
 
 **Q: The Orchestrator pulls from three Pub/Sub subscriptions. What happens if one of them is slow or never arrives?**
 
-The current implementation has a pull timeout on each subscription. If a subscription doesn't return a message within the timeout window, the Orchestrator proceeds with whatever it has. For the protocol subscription specifically, 0 protocols is a valid result (4 of 10 patients returned 0 matches); the Orchestrator handles this gracefully and notes in the summary that no protocols were found.
+The current implementation has a pull timeout on each subscription. If a subscription doesn't return a message within the timeout window, the Orchestrator proceeds with whatever it has. For the protocol subscription specifically, 0 protocols is a valid result — the Orchestrator handles this gracefully and notes in the summary that no protocols were found. With the complete 10-document corpus this is unlikely, but Vertex AI Search semantic matching is not guaranteed for every presentation.
 
 ---
 
@@ -52,13 +52,13 @@ Speed and cost. Clinical decision support at this stage is more about reasoning 
 
 **Q: What does the FHIR `$everything` operation actually return?**
 
-`$everything` is a FHIR operation that returns all resources associated with a Patient: conditions, medications, allergies, observations, encounters, procedures, and more, in a single Bundle response. For the synthetic patients in this system, responses range from roughly 7,000 to 8,400 bytes. The Patient Context Agent parses the Bundle and extracts only the clinically relevant resource types: Condition, MedicationRequest, AllergyIntolerance, and Observation (labs and vitals).
+`$everything` is a FHIR operation that returns all resources associated with a Patient: conditions, medications, allergies, observations, encounters, procedures, and more, in a single Bundle response. For the synthetic patients in this system, responses range from roughly 7,000 to 15,000 bytes depending on how many conditions, medications, and observations the patient has. The Patient Context Agent parses the Bundle and extracts only the clinically relevant resource types: Condition, MedicationRequest, AllergyIntolerance, and Observation (labs and vitals).
 
 ---
 
 **Q: Why do some patients have 0 labs/vitals in the context output?**
 
-The synthetic patient FHIR bundles were built with conditions, medications, and allergies but not all patients were given Observation resources for vitals and labs. In a real deployment, these would come from the EHR. The pipeline handles missing resource types gracefully; the Patient Context Agent reports `labs_found: 0` and `vitals_found: 0` rather than failing. The Diagnosis Agent still generates clinically reasonable differentials based on the available conditions and chief complaint.
+As of the March 2026 update, all 10 synthetic patient bundles include Observation resources covering the clinically relevant labs and vitals for each scenario (troponin for NSTEMI, lactate for sepsis, eGFR/creatinine/potassium for CKD, glucose/pH/bicarbonate for DKA, and so on). In earlier versions of the project, not all bundles had Observation resources and some patients returned `labs_found: 0`. The pipeline still handles this gracefully if observations are absent — the Diagnosis Agent generates differentials based on available conditions and chief complaint — but all current bundles are fully populated.
 
 ---
 
@@ -70,7 +70,7 @@ FHIR resource IDs are immutable once created in the store. When the patient name
 
 **Q: How are the synthetic patients structured? What FHIR resource types does each bundle contain?**
 
-Each patient bundle is a FHIR R4 `transaction` Bundle containing: one `Patient` resource (demographics, identifiers), one or more `Condition` resources (diagnoses with ICD-10 codes and clinical status), one or more `MedicationRequest` resources (medications with RxNorm codes and dosing), one `AllergyIntolerance` resource, and two to six `Observation` resources (labs and vitals where applicable). Each bundle is loaded via a single POST to the FHIR store's Bundle endpoint.
+Each patient bundle is a FHIR R4 `transaction` Bundle containing: one `Patient` resource (demographics, identifiers), one or more `Condition` resources (diagnoses with ICD-10 codes and clinical status), one or more `MedicationRequest` resources (medications with RxNorm codes and dosing), one `AllergyIntolerance` resource, and two to six `Observation` resources (labs and vitals where applicable). Each bundle is loaded resource-by-resource via `scripts/load_fhir_patients.py`, which uses conditional create (POST with `If-None-Exist: _id=xxx` header) followed by a PUT fallback for upsert semantics. Resources are loaded in dependency order: Patient first, then Encounter, Condition, AllergyIntolerance, MedicationRequest, and Observation.
 
 ---
 
@@ -78,7 +78,7 @@ Each patient bundle is a FHIR R4 `transaction` Bundle containing: one `Patient` 
 
 **Q: What exactly does "pseudonymization" mean in this context? Is the PHI gone or just hidden?**
 
-Pseudonymization replaces PHI tokens with deterministic surrogate values encrypted using the KMS key. The original value is not stored, but given the same KMS key, you could reconstruct the original from the surrogate if needed (unlike anonymization, which is irreversible). For demo purposes the BEFORE/AFTER text looks the same in the console output because the transformation is applied to the internal representation of the summary before it's written to Firestore; the surrogate values are KMS-encrypted tokens, not readable names.
+The answer depends on which DLP configuration path is active. When named DLP templates are provisioned (`scripts/setup_dlp_templates.py`) and `KMS_KEY_NAME` is set, the pipeline uses `CryptoReplaceFfxFpe` — a format-preserving encryption that produces deterministic surrogate values keyed to the KMS key. Given the same KMS key you could reconstruct the original, making this true pseudonymization (reversible with the key). When running without templates (the local dev fallback), the pipeline uses `replace_with_info_type_config`, which replaces PHI with its type label — for example `[PERSON_NAME]` or `[DATE]`. This is effectively anonymization: the original value is gone and cannot be recovered. Most local development runs use the fallback path. The console output shows `[PERSON_NAME]`-style tokens in both cases because the KMS surrogates are opaque byte strings that also appear as tokens in the log.
 
 ---
 
@@ -90,7 +90,7 @@ Defense in depth. Moment 1 ensures no raw PHI ever travels on the Pub/Sub bus; i
 
 **Q: Why did Peter J Rolle trigger an `AGE` DLP type when none of the other patients did?**
 
-Peter J Rolle is 6 years old. Cloud DLP classifies patient age as a PHI identifier specifically when it's associated with a minor, because age combined with other clinical data is sufficient to re-identify a child patient in ways that it isn't for an adult. The Diagnosis Agent's output for the febrile seizure case explicitly mentioned the patient's age (as it should, since febrile seizure management is entirely age-dependent), which triggered the `AGE` detection. This is correct behavior.
+Peter J Rolle is 6 years old. Cloud DLP's `AGE` info_type detects any explicit age mention in text — it does not have special minor-specific logic. The reason Peter's run triggered it is that febrile seizure management is entirely age-dependent, so Gemini explicitly stated his age in the diagnosis output (e.g. '6-year-old male'). Other patients' ages did not appear verbatim in their generated summaries. If any patient's age were explicitly written out in the Gemini output text, it would trigger the same detection. This is correct behavior — the `AGE` info_type is included precisely because explicit age statements in clinical text can contribute to re-identification.
 
 ---
 
@@ -104,13 +104,13 @@ Moment 2 runs on the raw differential diagnosis payload from the Diagnosis Agent
 
 **Q: How does the Protocol Lookup Agent decide what to search for?**
 
-It builds 3-4 distinct queries per patient from: (1) the chief complaint free-text string from the FHIR Condition narrative, (2) `management guidelines {condition_display} {ICD-10 code}` for each of the top 2-3 conditions, and (3) a combined symptom-driven query. For David Conrad (stroke), the queries were: "clinical protocol Sudden left-sided weakness, facial droop, and aphasia, last known well 90 minutes ago", "management guidelines Acute Ischemic Stroke I63.9", "management guidelines Hypertension I10", and "management guidelines Atrial Fibrillation I48.91". Query 2 matched the NSTEMI protocol document, returning 1 result.
+It builds 3-4 distinct queries per patient from: (1) the chief complaint free-text string from the FHIR Condition narrative, (2) `management guidelines {condition_display} {ICD-10 code}` for each of the top 2-3 conditions, and (3) a combined symptom-driven query. For David Conrad (stroke), the queries were: "clinical protocol Sudden left-sided weakness, facial droop, and aphasia, last known well 90 minutes ago", "management guidelines Acute Ischemic Stroke I63.9", "management guidelines Hypertension I10", and "management guidelines Atrial Fibrillation I48.91". With the original 3-document corpus, Query 2 incorrectly matched the NSTEMI protocol due to shared cardiology keywords — a known corpus gap. With the complete 10-document corpus, Query 2 correctly matches the AHA/ASA Acute Ischemic Stroke protocol.
 
 ---
 
 **Q: Why do some patients get 0 protocol matches even though Vertex AI Search is working?**
 
-The corpus only has 3 documents. Vertex AI Search correctly retrieves documents when there's a reasonable semantic match. Sofia Reyes (PE) returned 0 because there's no PE document; the sepsis, NSTEMI, and CKD documents don't overlap sufficiently with pulmonary embolism management. Peter J Rolle (febrile seizure) returned 0 for the same reason. This is expected and correct behavior; the solution is adding more protocol documents, not fixing the search engine.
+With the original 3-document corpus (sepsis, NSTEMI, CKD), four patients returned 0 matches: Sofia Reyes (PE), Peter Rolle (febrile seizure), Charlotte Blandy (PPH), and Robert Chen (COPD). This was a corpus gap, not a search engine issue. The corpus is now complete at 10 documents covering all patient scenarios. All patients should now return at least one match. If a patient returns 0 after indexing, check that the protocol JSON was uploaded to GCS and ingested into the Vertex AI Search data store — the semantic match threshold may also need tuning for rare presentations.
 
 ---
 
@@ -160,9 +160,9 @@ Pub/Sub subscriptions retain unacknowledged messages until they're either pulled
 
 ---
 
-**Q: Will the RxNorm fix require changes to all 10 patient FHIR bundles?**
+**Q: Has the RxNorm fix been applied to all 10 patient FHIR bundles?**
 
-Yes. The `MedicationRequest` resources in each synthetic patient bundle contain RxNorm `coding` entries with RxCUI values that don't resolve against the NLM API. The fix is to look up each medication's correct RxCUI from the NLM RxNorm browser and update the FHIR JSON, then re-load the affected bundles to the FHIR store (FHIR allows updating existing resources via PUT). Once corrected, the Drug Interaction Agent's RxNorm API calls should return valid interaction data. Charlotte Blandy (methylergonovine and anticoagulants) and Sofia Reyes (rivaroxaban and NSAIDs) are the most clinically interesting cases to validate first.
+Yes, as of the March 2026 update. All 10 synthetic patient bundles in `data/synthetic/` were written from scratch with verified NLM RxCUI codes. Key codes: ticagrelor `321064`, atorvastatin `617310`, metformin `310798`, furosemide `41493`, lisinopril `29046`, piperacillin-tazobactam `1665005`, norepinephrine `1295583`, rivaroxaban `1114198`, alteplase `1804799`, regular insulin `274783`, albuterol `1154602`, prednisolone `1546356`, azithromycin `308460`, oxytocin `1666831`, tranexamic acid `1666779`, methylergonovine `310466`, acetaminophen `282464`, and N-acetylcysteine `608658`. Load via `scripts/load_fhir_patients.py`.
 
 ---
 
@@ -187,7 +187,7 @@ ADK's session management is local-first by design; the `local_storage.py` servic
 
 **Q: What would it take to deploy this to Cloud Run?**
 
-The main changes needed are: (1) containerize the ADK web server with a Dockerfile using Python 3.14 and requirements, (2) remove the `sa-key.json` direct credential loading and replace with Workload Identity Federation or Secret Manager, (3) set the environment variables as Cloud Run environment variables or Secret Manager references, (4) configure the container to expose port 8000. The Pub/Sub, FHIR, BigQuery, and Firestore integrations are all already cloud-native and require no changes. Estimated effort: 1-2 days.
+A `Dockerfile` is now included in the repo root. The remaining steps for Cloud Run deployment are: (1) build and push the image (`gcloud builds submit` or `docker build && docker push`), (2) remove `GOOGLE_APPLICATION_CREDENTIALS` from the environment and attach the service account at the Cloud Run service level using `--service-account`, (3) set GCP environment variables as Cloud Run env vars or Secret Manager references (see `scripts/setup_secret_manager.py`), (4) run `gcloud run deploy` with `--port 8000`. The Pub/Sub, FHIR, BigQuery, and Firestore integrations require no code changes — they are already cloud-native. The Dockerfile uses Python 3.14. Estimated provisioning time: 15-20 minutes.
 
 ---
 
