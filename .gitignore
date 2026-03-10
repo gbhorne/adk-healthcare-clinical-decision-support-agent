@@ -1,0 +1,45 @@
+# Environment — never commit credentials or secrets
+.env
+*.key
+*.pem
+service_account*.json
+*credentials*.json
+application_default_credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Synthetic data — exclude from git (loaded directly to FHIR)
+data/synthetic/*.json
+
+sa-key.json
+*.db
+.adk/
+cdss_agent/.adk/

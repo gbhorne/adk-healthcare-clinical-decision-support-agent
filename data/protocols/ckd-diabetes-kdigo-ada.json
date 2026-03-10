@@ -1,0 +1,26 @@
+{
+  "id": "protocol-ckd-diabetes-kdigo-ada-2022",
+  "title": "KDIGO 2022 Clinical Practice Guideline for Diabetes Management in Chronic Kidney Disease + ADA Standards of Care",
+  "source": "Kidney Disease: Improving Global Outcomes (KDIGO) / American Diabetes Association (ADA)",
+  "evidence_level": "Grade 1B",
+  "uri": "gs://cdss-data-healthcare-sa-489715/protocols/ckd-diabetes-kdigo-ada.json",
+  "description": "Comprehensive guidelines for management of type 2 diabetes in patients with chronic kidney disease, including medication safety thresholds, cardiorenal protection, glycemic targets, and management of AKI superimposed on CKD.",
+  "recommendations": [
+    "METFORMIN CONTRAINDICATION: Metformin is CONTRAINDICATED when eGFR <30 mL/min/1.73m² due to risk of lactic acidosis — DISCONTINUE IMMEDIATELY",
+    "METFORMIN DOSE REDUCTION: Reduce metformin dose by 50% when eGFR 30-45; reassess every 3 months",
+    "METFORMIN AND AKI: Hold metformin during any acute illness or procedure that may cause acute kidney injury",
+    "PREFERRED AGENT CKD+T2DM: SGLT2 inhibitor (empagliflozin, dapagliflozin) with eGFR >=20 for cardiorenal protection — first-line after metformin discontinuation",
+    "GLP-1 RECEPTOR AGONIST: Semaglutide or liraglutide appropriate for CKD stage 3-4 with cardiovascular disease",
+    "GLYCEMIC TARGET CKD: HbA1c target 7-8% for CKD stage 4-5 to minimize hypoglycemia risk",
+    "SULFONYLUREAS: Use with extreme caution in CKD — glipizide preferred over glyburide; reduce dose by 50% for eGFR <30; HIGH hypoglycemia risk",
+    "HYPERKALEMIA MANAGEMENT: Monitor potassium closely; ACE inhibitor/ARB may worsen hyperkalemia in CKD stage 4-5",
+    "FLUID MANAGEMENT AKI-on-CKD: Restrict sodium to <2g/day; restrict fluids if oliguric; furosemide for hypervolemia",
+    "SULFONAMIDE ALLERGY AND FUROSEMIDE: Furosemide contains sulfonamide moiety — theoretical cross-reactivity with sulfonamide allergy; use bumetanide or ethacrynic acid as alternative if allergy severe",
+    "BLOOD PRESSURE TARGET: <130/80 mmHg for CKD with diabetes; ACE inhibitor or ARB first-line for proteinuria",
+    "AVOID NEPHROTOXINS: NSAIDs, IV contrast, aminoglycosides — contraindicated or use with extreme caution in CKD stage 4",
+    "DIALYSIS PREPARATION: Begin dialysis education for CKD stage 4 (eGFR 15-29); consider AV fistula placement",
+    "AKI REVERSAL: Identify and treat reversible causes — obstruction, contrast nephropathy, volume depletion, nephrotoxins"
+  ],
+  "icd10_codes": ["N18.4", "N18.3", "E11.65", "E11.9", "N17.9", "I10"],
+  "keywords": ["chronic kidney disease", "CKD", "diabetes", "metformin", "eGFR", "AKI", "acute kidney injury", "hyperkalemia", "furosemide", "SGLT2", "sulfonamide allergy", "lactic acidosis", "hypervolemia"]
+}

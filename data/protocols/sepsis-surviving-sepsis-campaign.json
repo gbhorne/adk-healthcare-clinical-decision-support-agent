@@ -1,0 +1,25 @@
+{
+  "id": "protocol-sepsis-ssc-2021",
+  "title": "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021",
+  "source": "Surviving Sepsis Campaign / Society of Critical Care Medicine",
+  "evidence_level": "Grade 1A",
+  "uri": "gs://cdss-data-healthcare-sa-489715/protocols/sepsis-surviving-sepsis-campaign.json",
+  "description": "Comprehensive evidence-based guidelines for the recognition, resuscitation, and management of adult patients with sepsis and septic shock, including antibiotic stewardship, fluid resuscitation, vasopressor use, and source control.",
+  "recommendations": [
+    "HOUR-1 BUNDLE: Begin resuscitation immediately upon recognition of sepsis or septic shock",
+    "Measure lactate level; re-measure lactate if initial lactate >2 mmol/L",
+    "Obtain blood cultures BEFORE administering antibiotics",
+    "Administer broad-spectrum antibiotics within 1 hour of sepsis recognition",
+    "Begin 30 mL/kg crystalloid fluid for hypotension or lactate >=4 mmol/L",
+    "Apply vasopressors (norepinephrine first-line) for MAP <65 mmHg despite fluids",
+    "For septic shock: target MAP >=65 mmHg with norepinephrine as first-line vasopressor",
+    "For urinary source (pyelonephritis/urosepsis): ceftriaxone 1-2g IV q24h is first-line UNLESS penicillin allergy — use aztreonam or fluoroquinolone instead",
+    "PENICILLIN ALLERGY NOTE: Ceftriaxone has 1-2% cross-reactivity with penicillin allergy — assess allergy history before administration",
+    "Reassess fluid responsiveness with dynamic measures; avoid fluid overload",
+    "Source control: drain abscess, remove infected device, or treat obstruction within 6-12 hours",
+    "Procalcitonin-guided antibiotic de-escalation recommended to reduce duration",
+    "Target 7-day antibiotic course for uncomplicated bacteremia from urinary source"
+  ],
+  "icd10_codes": ["A41.9", "N10", "R65.20", "R65.21"],
+  "keywords": ["sepsis", "septic shock", "pyelonephritis", "urosepsis", "bacteremia", "hypotension", "lactate", "norepinephrine", "broad spectrum antibiotics"]
+}

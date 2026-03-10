@@ -1,0 +1,26 @@
+{
+  "id": "protocol-nstemi-accaha-2022",
+  "title": "ACC/AHA Guideline for the Diagnosis and Management of Patients With Non-ST-Elevation Acute Coronary Syndromes (NSTE-ACS)",
+  "source": "American College of Cardiology / American Heart Association",
+  "evidence_level": "Class I, Level A",
+  "uri": "gs://cdss-data-healthcare-sa-489715/protocols/nstemi-accaha-guidelines.json",
+  "description": "Evidence-based guidelines for risk stratification, antiplatelet therapy, anticoagulation, invasive strategy, and secondary prevention in patients with NSTEMI and unstable angina. Includes specific guidance for allergy management in ACS.",
+  "recommendations": [
+    "DUAL ANTIPLATELET THERAPY (DAPT): Aspirin 325mg loading dose PLUS P2Y12 inhibitor (ticagrelor 180mg or clopidogrel 600mg) for all NSTE-ACS patients",
+    "ASPIRIN ALLERGY PROTOCOL: If true aspirin allergy — do NOT administer aspirin; use P2Y12 inhibitor monotherapy (ticagrelor preferred) plus consider aspirin desensitization",
+    "ASPIRIN ALLERGY — ALTERNATIVE: Ticagrelor 180mg loading dose as monotherapy is acceptable when aspirin is contraindicated due to allergy",
+    "ASPIRIN HYPERSENSITIVITY: Aspirin desensitization protocol may be performed in catheterization lab setting under monitoring if aspirin essential for stenting",
+    "Obtain 12-lead ECG within 10 minutes of ED arrival; repeat every 15-30 min if initial non-diagnostic",
+    "Measure high-sensitivity troponin at presentation and 1-3 hours later (0/1hr or 0/3hr algorithm)",
+    "Risk stratification using TIMI or GRACE score within 2 hours of presentation",
+    "Anticoagulation: UFH or enoxaparin for all NSTE-ACS; fondaparinux preferred if no PCI planned",
+    "Early invasive strategy (angiography within 24h) for high-risk features: elevated troponin, dynamic ECG changes, GRACE score >140",
+    "Statin therapy: high-intensity statin (atorvastatin 40-80mg) immediately upon diagnosis",
+    "Beta-blocker within 24 hours if no contraindications (EF >=40%, no acute HF, no bradycardia)",
+    "ACE inhibitor/ARB for all NSTE-ACS with EF <40%, hypertension, or diabetes",
+    "Avoid NSAIDs and COX-2 inhibitors in ACS — increased cardiovascular risk",
+    "Secondary prevention: smoking cessation, cardiac rehabilitation, lipid management to LDL <70 mg/dL"
+  ],
+  "icd10_codes": ["I21.4", "I21.9", "I20.0"],
+  "keywords": ["NSTEMI", "NSTE-ACS", "unstable angina", "troponin", "aspirin allergy", "dual antiplatelet", "ticagrelor", "clopidogrel", "PCI", "coronary angiography", "acute coronary syndrome"]
+}

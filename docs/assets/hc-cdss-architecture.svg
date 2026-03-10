@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2000" font-family="'Courier New', Courier, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b0f1e"/>
+      <stop offset="100%" style="stop-color:#0d1520"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff" opacity="0.9"/>
+    </marker>
+    <marker id="arrG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00ff9d" opacity="0.9"/>
+    </marker>
+    <marker id="arrO" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f5a623" opacity="0.9"/>
+    </marker>
+    <marker id="arrP" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#c084fc" opacity="0.9"/>
+    </marker>
+    <marker id="arrR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f87171" opacity="0.9"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="2000" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="200" x2="1600" y2="200"/>
+    <line x1="0" y1="420" x2="1600" y2="420"/>
+    <line x1="0" y1="700" x2="1600" y2="700"/>
+    <line x1="0" y1="1060" x2="1600" y2="1060"/>
+    <line x1="0" y1="1380" x2="1600" y2="1380"/>
+    <line x1="0" y1="1720" x2="1600" y2="1720"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- TITLE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="40" y="20" width="1520" height="90" rx="6" fill="#0f172a" stroke="#00d4ff" stroke-width="1.5" opacity="0.9"/>
+  <text x="800" y="58" text-anchor="middle" fill="#00d4ff" font-size="26" font-weight="bold" letter-spacing="5" filter="url(#glow)">HC-CDSS · HEALTHCARE CLINICAL DECISION SUPPORT SYSTEM</text>
+  <text x="800" y="92" text-anchor="middle" fill="#38bdf8" font-size="15" letter-spacing="3">GOOGLE CLOUD  ·  VERTEX AI  ·  AGENT DEVELOPMENT KIT  ·  FHIR R4  ·  gemini-2.0-flash-001</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LAYER 1 — ENTRY -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="52" y="140" fill="#00d4ff" font-size="13" letter-spacing="3" opacity="0.6">LAYER 1 — ENTRY</text>
+
+  <!-- ADK Web Server -->
+  <rect x="40" y="150" width="340" height="230" rx="6" fill="#0f1f3d" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="40" y="150" width="340" height="36" rx="6" fill="#00d4ff" opacity="0.12"/>
+  <text x="210" y="174" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold" letter-spacing="2">ADK WEB SERVER</text>
+  <text x="210" y="210" text-anchor="middle" fill="#7dd3fc" font-size="13">adk web · port 8000</text>
+  <text x="210" y="234" text-anchor="middle" fill="#4a7a9b" font-size="12">Uvicorn / FastAPI</text>
+  <text x="210" y="256" text-anchor="middle" fill="#4a7a9b" font-size="12">InMemoryCredentialService</text>
+  <text x="210" y="278" text-anchor="middle" fill="#4a7a9b" font-size="12">Session: SQLite (.adk/)</text>
+  <text x="210" y="300" text-anchor="middle" fill="#4a7a9b" font-size="12">http://127.0.0.1:8000</text>
+  <text x="210" y="366" text-anchor="middle" fill="#4a7a9b" font-size="12"> </text>
+
+  <!-- CDSS Root Agent -->
+  <rect x="430" y="150" width="380" height="230" rx="6" fill="#0f1f3d" stroke="#00d4ff" stroke-width="2.5" filter="url(#glow)"/>
+  <rect x="430" y="150" width="380" height="36" rx="6" fill="#00d4ff" opacity="0.18"/>
+  <text x="620" y="174" text-anchor="middle" fill="#00d4ff" font-size="15" font-weight="bold" letter-spacing="2">CDSS ROOT AGENT</text>
+  <text x="620" y="210" text-anchor="middle" fill="#7dd3fc" font-size="13">cdss_agent · agent.py</text>
+  <text x="620" y="234" text-anchor="middle" fill="#4a7a9b" font-size="12">Model: gemini-2.0-flash-001</text>
+  <text x="620" y="256" text-anchor="middle" fill="#4a7a9b" font-size="12">Backend: Vertex AI (us-central1)</text>
+  <text x="620" y="278" text-anchor="middle" fill="#4a7a9b" font-size="12">SDK: google.genai</text>
+  <text x="620" y="300" text-anchor="middle" fill="#4a7a9b" font-size="12">ADK Framework orchestrator</text>
+
+  <!-- Config / Auth -->
+  <rect x="870" y="150" width="340" height="230" rx="6" fill="#0f1f3d" stroke="#334155" stroke-width="1.5"/>
+  <rect x="870" y="150" width="340" height="36" rx="6" fill="#334155" opacity="0.4"/>
+  <text x="1040" y="174" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="bold" letter-spacing="2">CONFIG &amp; AUTH</text>
+  <text x="1040" y="210" text-anchor="middle" fill="#64748b" font-size="12">GCP_PROJECT_ID: healthcare-sa-489715</text>
+  <text x="1040" y="232" text-anchor="middle" fill="#64748b" font-size="12">GCP_LOCATION: us-central1</text>
+  <text x="1040" y="254" text-anchor="middle" fill="#64748b" font-size="12">GEMINI_MODEL: gemini-2.0-flash-001</text>
+  <text x="1040" y="276" text-anchor="middle" fill="#64748b" font-size="12">VERTEX_AI_SEARCH_ENGINE_ID</text>
+  <text x="1040" y="298" text-anchor="middle" fill="#64748b" font-size="12">SA: cdss-sa@healthcare-sa-489715</text>
+  <text x="1040" y="320" text-anchor="middle" fill="#64748b" font-size="12">GOOGLE_APPLICATION_CREDENTIALS</text>
+
+  <!-- Service Account -->
+  <rect x="1260" y="150" width="300" height="230" rx="6" fill="#0f1f3d" stroke="#334155" stroke-width="1.5"/>
+  <rect x="1260" y="150" width="300" height="36" rx="6" fill="#334155" opacity="0.4"/>
+  <text x="1410" y="174" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="bold" letter-spacing="2">IAM ROLES</text>
+  <text x="1410" y="210" text-anchor="middle" fill="#64748b" font-size="12">roles/healthcare.fhirResourceEditor</text>
+  <text x="1410" y="232" text-anchor="middle" fill="#64748b" font-size="12">roles/bigquery.dataEditor</text>
+  <text x="1410" y="254" text-anchor="middle" fill="#64748b" font-size="12">roles/datastore.user</text>
+  <text x="1410" y="276" text-anchor="middle" fill="#64748b" font-size="12">roles/pubsub.publisher/subscriber</text>
+  <text x="1410" y="298" text-anchor="middle" fill="#64748b" font-size="12">roles/dlp.user</text>
+  <text x="1410" y="320" text-anchor="middle" fill="#64748b" font-size="12">roles/cloudkms.cryptoKeyEncrypterDecrypter</text>
+
+  <!-- Arrow ADK → Root Agent -->
+  <line x1="380" y1="265" x2="428" y2="265" stroke="#00d4ff" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="404" y="258" text-anchor="middle" fill="#00d4ff" font-size="11">invoke</text>
+
+  <!-- Arrow Root Agent down to PubSub -->
+  <line x1="620" y1="380" x2="620" y2="448" stroke="#f5a623" stroke-width="2" marker-end="url(#arrO)"/>
+  <text x="640" y="422" fill="#f5a623" font-size="11">publish</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LAYER 2 — PUB/SUB -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="52" y="442" fill="#f5a623" font-size="13" letter-spacing="3" opacity="0.6">LAYER 2 — PUB/SUB MESSAGE BUS</text>
+
+  <rect x="40" y="452" width="1520" height="80" rx="6" fill="#1a0f00" stroke="#f5a623" stroke-width="1.5"/>
+  <text x="800" y="482" text-anchor="middle" fill="#f5a623" font-size="14" font-weight="bold" letter-spacing="4">GOOGLE CLOUD PUB/SUB</text>
+
+  <!-- Topics -->
+  <rect x="60" y="498" width="240" height="24" rx="3" fill="#f5a623" opacity="0.12" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="180" y="515" text-anchor="middle" fill="#fbbf24" font-size="12">patient-context-ready</text>
+
+  <rect x="320" y="498" width="220" height="24" rx="3" fill="#f5a623" opacity="0.12" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="430" y="515" text-anchor="middle" fill="#fbbf24" font-size="12">diagnosis-ready</text>
+
+  <rect x="560" y="498" width="220" height="24" rx="3" fill="#f5a623" opacity="0.12" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="670" y="515" text-anchor="middle" fill="#fbbf24" font-size="12">protocols-ready</text>
+
+  <rect x="800" y="498" width="260" height="24" rx="3" fill="#f5a623" opacity="0.12" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="930" y="515" text-anchor="middle" fill="#fbbf24" font-size="12">drug-interactions-ready</text>
+
+  <rect x="1080" y="498" width="200" height="24" rx="3" fill="#f5a623" opacity="0.12" stroke="#f5a623" stroke-width="0.8"/>
+  <text x="1180" y="515" text-anchor="middle" fill="#fbbf24" font-size="12">audit-events</text>
+
+  <rect x="1300" y="498" width="240" height="24" rx="3" fill="#f87171" opacity="0.15" stroke="#f87171" stroke-width="0.8"/>
+  <text x="1420" y="515" text-anchor="middle" fill="#f87171" font-size="12">Cloud DLP (3 moments)</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LAYER 3 — AGENTS -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="52" y="560" fill="#00ff9d" font-size="13" letter-spacing="3" opacity="0.6">LAYER 3 — SPECIALIST AGENTS</text>
+
+  <!-- STEP labels -->
+  <text x="160" y="584" text-anchor="middle" fill="#00ff9d" font-size="11" opacity="0.5">STEP 1</text>
+  <text x="470" y="584" text-anchor="middle" fill="#00ff9d" font-size="11" opacity="0.5">STEP 2 (PARALLEL)</text>
+  <text x="840" y="584" text-anchor="middle" fill="#00ff9d" font-size="11" opacity="0.5">STEP 2 (PARALLEL)</text>
+  <text x="1130" y="584" text-anchor="middle" fill="#00ff9d" font-size="11" opacity="0.5">STEP 3</text>
+  <text x="1450" y="584" text-anchor="middle" fill="#f5a623" font-size="11" opacity="0.5">STEP 4</text>
+
+  <!-- Patient Context Agent -->
+  <rect x="40" y="592" width="240" height="300" rx="6" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <rect x="40" y="592" width="240" height="36" rx="6" fill="#00ff9d" opacity="0.12"/>
+  <text x="160" y="616" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">PATIENT CONTEXT</text>
+  <text x="160" y="650" text-anchor="middle" fill="#4ade80" font-size="12">patient_context/agent.py</text>
+  <text x="160" y="676" text-anchor="middle" fill="#166534" font-size="12">FHIR $everything query</text>
+  <text x="160" y="698" text-anchor="middle" fill="#166534" font-size="12">Extracts conditions,</text>
+  <text x="160" y="718" text-anchor="middle" fill="#166534" font-size="12">meds, allergies, labs</text>
+  <text x="160" y="742" text-anchor="middle" fill="#f87171" font-size="12">DLP Moment 1</text>
+  <text x="160" y="764" text-anchor="middle" fill="#166534" font-size="12">Publishes →</text>
+  <text x="160" y="782" text-anchor="middle" fill="#fbbf24" font-size="12">patient-context-ready</text>
+  <text x="160" y="806" text-anchor="middle" fill="#166534" font-size="12">Publishes → audit-events</text>
+  <text x="160" y="872" text-anchor="middle" fill="#166534" font-size="12"> </text>
+
+  <!-- Diagnosis Agent -->
+  <rect x="300" y="592" width="340" height="300" rx="6" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <rect x="300" y="592" width="340" height="36" rx="6" fill="#00ff9d" opacity="0.12"/>
+  <text x="470" y="616" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">DIAGNOSIS AGENT</text>
+  <text x="470" y="650" text-anchor="middle" fill="#4ade80" font-size="12">diagnosis/agent.py</text>
+  <text x="470" y="676" text-anchor="middle" fill="#166534" font-size="12">Pulls: diagnosis-agent-sub</text>
+  <text x="470" y="698" text-anchor="middle" fill="#166534" font-size="12">Gemini differential diagnosis</text>
+  <text x="470" y="718" text-anchor="middle" fill="#166534" font-size="12">Ranked Dx + ICD-10 codes</text>
+  <text x="470" y="742" text-anchor="middle" fill="#fbbf24" font-size="12">⚠ vertexai SDK (deprecated)</text>
+  <text x="470" y="762" text-anchor="middle" fill="#f87171" font-size="12">DLP Moment 2</text>
+  <text x="470" y="784" text-anchor="middle" fill="#166534" font-size="12">Publishes → diagnosis-ready</text>
+  <text x="470" y="806" text-anchor="middle" fill="#166534" font-size="12">Publishes → audit-events</text>
+
+  <!-- Protocol Lookup Agent -->
+  <rect x="660" y="592" width="360" height="300" rx="6" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <rect x="660" y="592" width="360" height="36" rx="6" fill="#00ff9d" opacity="0.12"/>
+  <text x="840" y="616" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">PROTOCOL LOOKUP</text>
+  <text x="840" y="650" text-anchor="middle" fill="#4ade80" font-size="12">protocol_lookup/agent.py</text>
+  <text x="840" y="676" text-anchor="middle" fill="#166534" font-size="12">Pulls: protocol-agent-sub</text>
+  <text x="840" y="698" text-anchor="middle" fill="#166534" font-size="12">Vertex AI Search (global)</text>
+  <text x="840" y="718" text-anchor="middle" fill="#166534" font-size="12">Engine: cds-clinical-protocols</text>
+  <text x="840" y="738" text-anchor="middle" fill="#166534" font-size="12">3 protocol docs in corpus</text>
+  <text x="840" y="758" text-anchor="middle" fill="#166534" font-size="12">Sepsis · NSTEMI · CKD</text>
+  <text x="840" y="782" text-anchor="middle" fill="#166534" font-size="12">Publishes → protocols-ready</text>
+  <text x="840" y="806" text-anchor="middle" fill="#166534" font-size="12">Publishes → audit-events</text>
+
+  <!-- Drug Interaction Agent -->
+  <rect x="1040" y="592" width="280" height="300" rx="6" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <rect x="1040" y="592" width="280" height="36" rx="6" fill="#00ff9d" opacity="0.12"/>
+  <text x="1180" y="616" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="bold">DRUG INTERACTION</text>
+  <text x="1180" y="650" text-anchor="middle" fill="#4ade80" font-size="12">drug_interaction/agent.py</text>
+  <text x="1180" y="676" text-anchor="middle" fill="#166534" font-size="12">Pulls: drug-interaction-sub</text>
+  <text x="1180" y="698" text-anchor="middle" fill="#166534" font-size="12">FHIR: MedicationRequest</text>
+  <text x="1180" y="718" text-anchor="middle" fill="#166534" font-size="12">AllergyIntolerance check</text>
+  <text x="1180" y="738" text-anchor="middle" fill="#fbbf24" font-size="12">⚠ RxNorm 404 (pending fix)</text>
+  <text x="1180" y="758" text-anchor="middle" fill="#166534" font-size="12">Local rules fallback</text>
+  <text x="1180" y="782" text-anchor="middle" fill="#166534" font-size="12">Publishes → drug-interactions</text>
+  <text x="1180" y="806" text-anchor="middle" fill="#166534" font-size="12">Publishes → audit-events</text>
+
+  <!-- Orchestrator Agent -->
+  <rect x="1340" y="592" width="220" height="300" rx="6" fill="#1a0f00" stroke="#f5a623" stroke-width="2" filter="url(#glow)"/>
+  <rect x="1340" y="592" width="220" height="36" rx="6" fill="#f5a623" opacity="0.15"/>
+  <text x="1450" y="616" text-anchor="middle" fill="#f5a623" font-size="13" font-weight="bold">ORCHESTRATOR</text>
+  <text x="1450" y="650" text-anchor="middle" fill="#fbbf24" font-size="12">orchestrator/agent.py</text>
+  <text x="1450" y="676" text-anchor="middle" fill="#92400e" font-size="12">google.genai SDK</text>
+  <text x="1450" y="698" text-anchor="middle" fill="#92400e" font-size="12">Pulls 3 subscriptions</text>
+  <text x="1450" y="718" text-anchor="middle" fill="#92400e" font-size="12">Synthesizes CDSSummary</text>
+  <text x="1450" y="742" text-anchor="middle" fill="#f87171" font-size="12">DLP Moment 3</text>
+  <text x="1450" y="764" text-anchor="middle" fill="#92400e" font-size="12">→ Firestore · BigQuery</text>
+  <text x="1450" y="786" text-anchor="middle" fill="#92400e" font-size="12">→ audit-events</text>
+  <text x="1450" y="808" text-anchor="middle" fill="#f5a623" font-size="11">STEP 4 — SYNTHESIS</text>
+
+  <!-- Arrows pubsub → agents -->
+  <line x1="180" y1="532" x2="160" y2="590" stroke="#00ff9d" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <line x1="430" y1="532" x2="440" y2="590" stroke="#00ff9d" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <line x1="670" y1="532" x2="780" y2="590" stroke="#00ff9d" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <line x1="930" y1="532" x2="1130" y2="590" stroke="#00ff9d" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <line x1="1180" y1="532" x2="1420" y2="590" stroke="#f5a623" stroke-width="1.5" marker-end="url(#arrO)"/>
+
+  <!-- Arrows agents → pubsub (publish back) -->
+  <line x1="160" y1="892" x2="160" y2="1070" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrP)" stroke-dasharray="6,3"/>
+  <line x1="470" y1="892" x2="470" y2="1070" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrP)" stroke-dasharray="6,3"/>
+  <line x1="840" y1="892" x2="840" y2="1070" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrP)" stroke-dasharray="6,3"/>
+  <line x1="1180" y1="892" x2="1180" y2="1070" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrP)" stroke-dasharray="6,3"/>
+  <line x1="1450" y1="892" x2="1450" y2="1070" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrP)" stroke-dasharray="6,3"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LAYER 4 — DATA PLANE -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="52" y="1054" fill="#c084fc" font-size="13" letter-spacing="3" opacity="0.6">LAYER 4 — DATA PLANE</text>
+
+  <!-- FHIR Store -->
+  <rect x="40" y="1064" width="290" height="280" rx="6" fill="#150d2a" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="40" y="1064" width="290" height="36" rx="6" fill="#c084fc" opacity="0.12"/>
+  <text x="185" y="1088" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="bold">FHIR R4 STORE</text>
+  <text x="185" y="1122" text-anchor="middle" fill="#a78bfa" font-size="12">Cloud Healthcare API</text>
+  <text x="185" y="1146" text-anchor="middle" fill="#6d28d9" font-size="12">cdss-dataset / cdss-fhir-store</text>
+  <text x="185" y="1170" text-anchor="middle" fill="#6d28d9" font-size="12">10 synthetic patients loaded</text>
+  <text x="185" y="1194" text-anchor="middle" fill="#6d28d9" font-size="12">Patient · Condition</text>
+  <text x="185" y="1216" text-anchor="middle" fill="#6d28d9" font-size="12">MedicationRequest</text>
+  <text x="185" y="1238" text-anchor="middle" fill="#6d28d9" font-size="12">AllergyIntolerance</text>
+  <text x="185" y="1260" text-anchor="middle" fill="#6d28d9" font-size="12">Observation (labs/vitals)</text>
+  <text x="185" y="1284" text-anchor="middle" fill="#6d28d9" font-size="12">$everything · us-central1</text>
+  <text x="185" y="1326" text-anchor="middle" fill="#6d28d9" font-size="12"> </text>
+
+  <!-- Vertex AI Search -->
+  <rect x="350" y="1064" width="290" height="280" rx="6" fill="#150d2a" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="350" y="1064" width="290" height="36" rx="6" fill="#c084fc" opacity="0.12"/>
+  <text x="495" y="1088" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="bold">VERTEX AI SEARCH</text>
+  <text x="495" y="1122" text-anchor="middle" fill="#a78bfa" font-size="12">Discovery Engine</text>
+  <text x="495" y="1146" text-anchor="middle" fill="#6d28d9" font-size="12">cds-clinical-protocols</text>
+  <text x="495" y="1170" text-anchor="middle" fill="#6d28d9" font-size="12">Data store: cds-protocols-ds2</text>
+  <text x="495" y="1196" text-anchor="middle" fill="#6d28d9" font-size="12">Global endpoint (required)</text>
+  <text x="495" y="1222" text-anchor="middle" fill="#6d28d9" font-size="12">Protocol: Sepsis Bundle</text>
+  <text x="495" y="1244" text-anchor="middle" fill="#6d28d9" font-size="12">Protocol: NSTEMI Mgmt</text>
+  <text x="495" y="1266" text-anchor="middle" fill="#6d28d9" font-size="12">Protocol: CKD/Diabetes</text>
+  <text x="495" y="1288" text-anchor="middle" fill="#fbbf24" font-size="12">⚠ 7 more protocols pending</text>
+
+  <!-- Vertex AI / Gemini -->
+  <rect x="660" y="1064" width="290" height="280" rx="6" fill="#150d2a" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="660" y="1064" width="290" height="36" rx="6" fill="#c084fc" opacity="0.12"/>
+  <text x="805" y="1088" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="bold">VERTEX AI / GEMINI</text>
+  <text x="805" y="1122" text-anchor="middle" fill="#a78bfa" font-size="12">us-central1-aiplatform</text>
+  <text x="805" y="1146" text-anchor="middle" fill="#6d28d9" font-size="12">gemini-2.0-flash-001</text>
+  <text x="805" y="1170" text-anchor="middle" fill="#6d28d9" font-size="12">Orchestrator: google.genai</text>
+  <text x="805" y="1194" text-anchor="middle" fill="#fbbf24" font-size="12">Diagnosis: vertexai (legacy)</text>
+  <text x="805" y="1218" text-anchor="middle" fill="#6d28d9" font-size="12">AFC: max 10 remote calls</text>
+  <text x="805" y="1242" text-anchor="middle" fill="#6d28d9" font-size="12">generateContent /v1beta1</text>
+  <text x="805" y="1266" text-anchor="middle" fill="#6d28d9" font-size="12">Project: healthcare-sa-489715</text>
+
+  <!-- Cloud DLP -->
+  <rect x="970" y="1064" width="290" height="280" rx="6" fill="#200a0a" stroke="#f87171" stroke-width="1.5"/>
+  <rect x="970" y="1064" width="290" height="36" rx="6" fill="#f87171" opacity="0.12"/>
+  <text x="1115" y="1088" text-anchor="middle" fill="#f87171" font-size="14" font-weight="bold">CLOUD DLP</text>
+  <text x="1115" y="1122" text-anchor="middle" fill="#fca5a5" font-size="12">Data Loss Prevention API</text>
+  <text x="1115" y="1148" text-anchor="middle" fill="#991b1b" font-size="12">Moment 1: FHIR context scan</text>
+  <text x="1115" y="1172" text-anchor="middle" fill="#991b1b" font-size="12">Moment 2: Dx output scrub</text>
+  <text x="1115" y="1196" text-anchor="middle" fill="#991b1b" font-size="12">Moment 3: Summary PHI gate</text>
+  <text x="1115" y="1222" text-anchor="middle" fill="#991b1b" font-size="12">PHI: PERSON_NAME · AGE</text>
+  <text x="1115" y="1246" text-anchor="middle" fill="#991b1b" font-size="12">Pseudonymization (KMS key)</text>
+  <text x="1115" y="1270" text-anchor="middle" fill="#991b1b" font-size="12">cdss-keyring / cdss-key</text>
+  <text x="1115" y="1294" text-anchor="middle" fill="#991b1b" font-size="12">Inline config (named tmpl pending)</text>
+
+  <!-- GCS + RxNorm (smaller, side by side) -->
+  <rect x="1280" y="1064" width="280" height="130" rx="6" fill="#150d2a" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="1280" y="1064" width="280" height="36" rx="6" fill="#c084fc" opacity="0.12"/>
+  <text x="1420" y="1088" text-anchor="middle" fill="#c084fc" font-size="14" font-weight="bold">GCS BUCKET</text>
+  <text x="1420" y="1118" text-anchor="middle" fill="#6d28d9" font-size="12">cdss-data-healthcare-sa-489715</text>
+  <text x="1420" y="1140" text-anchor="middle" fill="#6d28d9" font-size="12">Protocol staging · FHIR data</text>
+  <text x="1420" y="1162" text-anchor="middle" fill="#6d28d9" font-size="12">KMS encrypted at rest</text>
+  <text x="1420" y="1184" text-anchor="middle" fill="#6d28d9" font-size="12"> </text>
+
+  <rect x="1280" y="1214" width="280" height="130" rx="6" fill="#150d2a" stroke="#fbbf24" stroke-width="1"/>
+  <rect x="1280" y="1214" width="280" height="36" rx="6" fill="#fbbf24" opacity="0.08"/>
+  <text x="1420" y="1238" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">RXNORM API</text>
+  <text x="1420" y="1268" text-anchor="middle" fill="#92400e" font-size="12">rxnav.nlm.nih.gov</text>
+  <text x="1420" y="1288" text-anchor="middle" fill="#f87171" font-size="12">⚠ 404 on current RxCUIs</text>
+  <text x="1420" y="1308" text-anchor="middle" fill="#92400e" font-size="12">Local rule fallback active</text>
+  <text x="1420" y="1330" text-anchor="middle" fill="#92400e" font-size="12"> </text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LAYER 5 — PERSISTENCE + AUDIT -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text x="52" y="1374" fill="#fb7185" font-size="13" letter-spacing="3" opacity="0.6">LAYER 5 — PERSISTENCE &amp; AUDIT</text>
+
+  <!-- Firestore -->
+  <rect x="40" y="1384" width="320" height="280" rx="6" fill="#0f1a0f" stroke="#fb7185" stroke-width="1.5"/>
+  <rect x="40" y="1384" width="320" height="36" rx="6" fill="#fb7185" opacity="0.12"/>
+  <text x="200" y="1408" text-anchor="middle" fill="#fb7185" font-size="14" font-weight="bold">FIRESTORE</text>
+  <text x="200" y="1444" text-anchor="middle" fill="#fda4af" font-size="12">Collection: cds_sessions/</text>
+  <text x="200" y="1468" text-anchor="middle" fill="#9f1239" font-size="12">One CDSSummary per session</text>
+  <text x="200" y="1492" text-anchor="middle" fill="#9f1239" font-size="12">10 sessions written ✓</text>
+  <text x="200" y="1516" text-anchor="middle" fill="#9f1239" font-size="12">session_id · patient_id</text>
+  <text x="200" y="1540" text-anchor="middle" fill="#9f1239" font-size="12">top_diagnosis · protocols</text>
+  <text x="200" y="1564" text-anchor="middle" fill="#9f1239" font-size="12">alerts · clinical_summary</text>
+  <text x="200" y="1588" text-anchor="middle" fill="#9f1239" font-size="12">DLP-pseudonymized text</text>
+  <text x="200" y="1612" text-anchor="middle" fill="#9f1239" font-size="12">Written by: Orchestrator</text>
+
+  <!-- BigQuery -->
+  <rect x="380" y="1384" width="320" height="280" rx="6" fill="#0f1a0f" stroke="#fb7185" stroke-width="1.5"/>
+  <rect x="380" y="1384" width="320" height="36" rx="6" fill="#fb7185" opacity="0.12"/>
+  <text x="540" y="1408" text-anchor="middle" fill="#fb7185" font-size="14" font-weight="bold">BIGQUERY</text>
+  <text x="540" y="1444" text-anchor="middle" fill="#fda4af" font-size="12">Dataset: cdss_audit</text>
+  <text x="540" y="1468" text-anchor="middle" fill="#9f1239" font-size="12">Table: audit_events</text>
+  <text x="540" y="1492" text-anchor="middle" fill="#9f1239" font-size="12">Table: clinical_summaries</text>
+  <text x="540" y="1516" text-anchor="middle" fill="#9f1239" font-size="12">50 total events (5/session)</text>
+  <text x="540" y="1540" text-anchor="middle" fill="#9f1239" font-size="12">Partitioned by timestamp</text>
+  <text x="540" y="1564" text-anchor="middle" fill="#9f1239" font-size="12">agent · action · status</text>
+  <text x="540" y="1588" text-anchor="middle" fill="#9f1239" font-size="12">duration_ms · dlp_count</text>
+  <text x="540" y="1612" text-anchor="middle" fill="#9f1239" font-size="12">Written by: Audit Agent</text>
+
+  <!-- Cloud Logging -->
+  <rect x="720" y="1384" width="320" height="280" rx="6" fill="#0f1a0f" stroke="#fb7185" stroke-width="1.5"/>
+  <rect x="720" y="1384" width="320" height="36" rx="6" fill="#fb7185" opacity="0.12"/>
+  <text x="880" y="1408" text-anchor="middle" fill="#fb7185" font-size="14" font-weight="bold">CLOUD LOGGING</text>
+  <text x="880" y="1444" text-anchor="middle" fill="#fda4af" font-size="12">Log: cds-audit-trail</text>
+  <text x="880" y="1468" text-anchor="middle" fill="#9f1239" font-size="12">Structured audit entries</text>
+  <text x="880" y="1492" text-anchor="middle" fill="#9f1239" font-size="12">Per-agent event logging</text>
+  <text x="880" y="1516" text-anchor="middle" fill="#9f1239" font-size="12">session_id · agent_name</text>
+  <text x="880" y="1540" text-anchor="middle" fill="#9f1239" font-size="12">timestamp · status</text>
+  <text x="880" y="1564" text-anchor="middle" fill="#9f1239" font-size="12">HIPAA-grade audit trail</text>
+  <text x="880" y="1588" text-anchor="middle" fill="#9f1239" font-size="12">Written by: Audit Agent</text>
+
+  <!-- Audit Agent -->
+  <rect x="1060" y="1384" width="320" height="280" rx="6" fill="#1a0800" stroke="#fb7185" stroke-width="2" filter="url(#glow)"/>
+  <rect x="1060" y="1384" width="320" height="36" rx="6" fill="#fb7185" opacity="0.15"/>
+  <text x="1220" y="1408" text-anchor="middle" fill="#fb7185" font-size="14" font-weight="bold">AUDIT AGENT</text>
+  <text x="1220" y="1444" text-anchor="middle" fill="#fda4af" font-size="12">audit/agent.py</text>
+  <text x="1220" y="1468" text-anchor="middle" fill="#9f1239" font-size="12">Pulls: audit-agent-sub</text>
+  <text x="1220" y="1492" text-anchor="middle" fill="#9f1239" font-size="12">Batch size: 20</text>
+  <text x="1220" y="1516" text-anchor="middle" fill="#9f1239" font-size="12">consecutive_timeouts guard</text>
+  <text x="1220" y="1540" text-anchor="middle" fill="#9f1239" font-size="12">Stops after 2 × 504</text>
+  <text x="1220" y="1564" text-anchor="middle" fill="#9f1239" font-size="12">5 events / session</text>
+  <text x="1220" y="1588" text-anchor="middle" fill="#9f1239" font-size="12">→ Cloud Logging</text>
+  <text x="1220" y="1612" text-anchor="middle" fill="#fb7185" font-size="12">STEP 5 — AUDIT FLUSH</text>
+
+  <!-- KMS -->
+  <rect x="1400" y="1384" width="160" height="130" rx="6" fill="#0f1a0f" stroke="#64748b" stroke-width="1"/>
+  <rect x="1400" y="1384" width="160" height="36" rx="6" fill="#64748b" opacity="0.1"/>
+  <text x="1480" y="1408" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="bold">KMS</text>
+  <text x="1480" y="1436" text-anchor="middle" fill="#475569" font-size="11">cdss-keyring</text>
+  <text x="1480" y="1454" text-anchor="middle" fill="#475569" font-size="11">cdss-key</text>
+  <text x="1480" y="1472" text-anchor="middle" fill="#475569" font-size="11">us-central1</text>
+  <text x="1480" y="1490" text-anchor="middle" fill="#475569" font-size="11">DLP encrypt</text>
+  <text x="1480" y="1508" text-anchor="middle" fill="#475569" font-size="11"> </text>
+
+  <!-- Arrows: orchestrator → Firestore/BQ, audit agent → logging/BQ -->
+  <line x1="1450" y1="1060" x2="200" y2="1382" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="8,4" marker-end="url(#arrR)" opacity="0.5"/>
+  <line x1="1450" y1="1060" x2="540" y2="1382" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="8,4" marker-end="url(#arrR)" opacity="0.5"/>
+  <line x1="1220" y1="1382" x2="880" y2="1382" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arrR)" opacity="0.6"/>
+  <line x1="1220" y1="1382" x2="540" y2="1382" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arrR)" opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PIPELINE LEGEND -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect x="40" y="1720" width="1520" height="240" rx="6" fill="#0a0e1a" stroke="#1e293b" stroke-width="1"/>
+
+  <text x="80" y="1756" fill="#00d4ff" font-size="14" font-weight="bold" letter-spacing="2">PIPELINE EXECUTION FLOW</text>
+
+  <!-- Step boxes -->
+  <rect x="80" y="1770" width="260" height="44" rx="4" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <text x="210" y="1789" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="bold">STEP 1</text>
+  <text x="210" y="1807" text-anchor="middle" fill="#4ade80" font-size="11">fetch_patient_context</text>
+
+  <text x="350" y="1796" fill="#334155" font-size="20">→</text>
+
+  <rect x="380" y="1770" width="320" height="44" rx="4" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <text x="540" y="1789" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="bold">STEP 2 (PARALLEL)</text>
+  <text x="540" y="1807" text-anchor="middle" fill="#4ade80" font-size="11">run_diagnosis_agent + run_protocol_lookup</text>
+
+  <text x="710" y="1796" fill="#334155" font-size="20">→</text>
+
+  <rect x="740" y="1770" width="280" height="44" rx="4" fill="#062020" stroke="#00ff9d" stroke-width="1.5"/>
+  <text x="880" y="1789" text-anchor="middle" fill="#00ff9d" font-size="12" font-weight="bold">STEP 3</text>
+  <text x="880" y="1807" text-anchor="middle" fill="#4ade80" font-size="11">run_drug_interaction_check</text>
+
+  <text x="1030" y="1796" fill="#334155" font-size="20">→</text>
+
+  <rect x="1060" y="1770" width="220" height="44" rx="4" fill="#1a0f00" stroke="#f5a623" stroke-width="1.5"/>
+  <text x="1170" y="1789" text-anchor="middle" fill="#f5a623" font-size="12" font-weight="bold">STEP 4</text>
+  <text x="1170" y="1807" text-anchor="middle" fill="#fbbf24" font-size="11">run_orchestrator</text>
+
+  <text x="1290" y="1796" fill="#334155" font-size="20">→</text>
+
+  <rect x="1320" y="1770" width="220" height="44" rx="4" fill="#0f1a0f" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="1430" y="1789" text-anchor="middle" fill="#fb7185" font-size="12" font-weight="bold">STEP 5</text>
+  <text x="1430" y="1807" text-anchor="middle" fill="#fda4af" font-size="11">process_audit_events</text>
+
+  <!-- Patients legend -->
+  <text x="80" y="1858" fill="#334155" font-size="13" font-weight="bold">10 FICTITIOUS PATIENTS VALIDATED:</text>
+  <text x="80" y="1882" fill="#1e3a2a" font-size="12">Diane Okafor (AKI/CKD)  ·  James Tran (Septic Shock)  ·  Marcus Webb (NSTEMI)  ·  Sofia Reyes (PE)  ·  David Conrad (Stroke)</text>
+  <text x="80" y="1904" fill="#1e3a2a" font-size="12">Amara Osei (DKA)  ·  Robert Chen (COPD/Pneumonia)  ·  Charlotte Blandy (PPH)  ·  Peter J Rolle (Febrile Seizure)  ·  Linda Marsh (ALF)</text>
+
+  <text x="80" y="1936" fill="#1e293b" font-size="11">⚠  All names and clinical data are entirely fictitious — created solely for system testing and demonstration.</text>
+  <text x="1420" y="1936" text-anchor="end" fill="#1e293b" font-size="11">github.com/gbhorne/adk-healthcare-clinical-decision-support-agent</text>
+</svg>
