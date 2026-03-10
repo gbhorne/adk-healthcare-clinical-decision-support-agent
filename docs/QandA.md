@@ -166,6 +166,11 @@ Yes. The `MedicationRequest` resources in each synthetic patient bundle contain 
 
 ---
 
+**Q: Peter J Rolle is 6 years old. The AAP febrile seizure guideline covers 6 months to 5 years. Is he outside the guideline age range?**
+
+Technically yes — the AAP 2011 Clinical Practice Guideline defines simple febrile seizure in children aged 6 months to 60 months (5 years). Peter is 72 months (6 years) at presentation. In practice, febrile seizures do occur in children up to age 6 and the same clinical approach applies: the AAP guideline's core recommendations (no routine LP, no CT, no EEG for a first simple febrile seizure) are clinically appropriate for a 6-year-old with a first generalized febrile seizure. The ICD-10 code R56.00 (Simple febrile convulsions) has no age restriction. For the CDSS demo, this is an intentional edge case: the system should retrieve the febrile seizure protocol and apply it, noting that the patient is at the upper boundary of the canonical age range. If this were a real deployment, a pediatric neurologist would determine whether the presentation warrants further workup given the age.
+
+
 ## Operations
 
 **Q: How long does a full pipeline run take end-to-end?**

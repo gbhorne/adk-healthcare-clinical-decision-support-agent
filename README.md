@@ -60,7 +60,7 @@ PHI protection is implemented at three pipeline intercept points:
 | 1 | Diane Okafor, 67F | CKD + AKI + drug alerts | AKI on CKD |
 | 2 | James Tran, 34M | Septic shock, urosepsis | Septic Shock / Pyelonephritis |
 | 3 | Marcus Webb, 58M | NSTEMI workup | Acute NSTEMI |
-| 4 | Sofia Reyes, 41F | Post-flight dyspnea, leg swelling | Acute Pulmonary Embolism |
+| 4 | Sofia Reyes, 42F | Post-flight dyspnea, leg swelling | Acute Pulmonary Embolism |
 | 5 | David Conrad, 62M | Left-sided weakness, aphasia | Acute Ischemic Stroke |
 | 6 | Amara Osei, 19F | BG 580 mg/dL, Kussmaul breathing | Diabetic Ketoacidosis (DKA) |
 | 7 | Robert Chen, 71M | COPD exacerbation, purulent cough | Acute COPD w/ Pneumonia |
