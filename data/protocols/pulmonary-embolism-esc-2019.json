@@ -1,0 +1,26 @@
+{
+  "id": "protocol-pulmonary-embolism-esc-2019",
+  "title": "ESC 2019 Guidelines on Acute Pulmonary Embolism: Diagnosis and Management",
+  "source": "European Society of Cardiology (ESC) / European Respiratory Society (ERS)",
+  "evidence_level": "Class I, Level A",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/pulmonary-embolism-esc-2019.json",
+  "description": "Evidence-based guidelines for risk stratification, anticoagulation, reperfusion therapy, and long-term management of acute pulmonary embolism, including massive, submassive, and low-risk presentations.",
+  "recommendations": [
+    "IMMEDIATE ANTICOAGULATION: Start anticoagulation without delay in high or intermediate clinical probability — do not wait for imaging confirmation",
+    "DIAGNOSTIC IMAGING: CT pulmonary angiography (CTPA) is the gold standard for PE confirmation in hemodynamically stable patients",
+    "WELLS SCORE: Use Wells criteria to stratify pre-test probability; score >4 indicates high probability, proceed directly to CTPA",
+    "D-DIMER: PERC rule if low clinical probability; if PERC negative, no further workup needed; if positive, obtain age-adjusted D-dimer",
+    "MASSIVE PE (hemodynamically unstable): Systemic thrombolysis with alteplase 100mg IV over 2 hours is first-line; consider surgical embolectomy or catheter-directed thrombolysis if thrombolysis contraindicated",
+    "SUBMASSIVE PE (RV dysfunction, hemodynamically stable): Anticoagulation alone; escalate to reperfusion if clinical deterioration",
+    "LOW-RISK PE: DOAC monotherapy preferred — rivaroxaban 15mg twice daily x 21 days then 20mg daily, or apixaban 10mg twice daily x 7 days then 5mg twice daily",
+    "ANTICOAGULATION DURATION: Minimum 3 months for provoked PE; extended therapy (indefinite) for unprovoked PE or malignancy-associated PE",
+    "CANCER-ASSOCIATED PE: LMWH (dalteparin) or rivaroxaban preferred over warfarin for malignancy-associated VTE",
+    "INFERIOR VENA CAVA FILTER: Only when anticoagulation is absolutely contraindicated; retrieve when anticoagulation becomes feasible",
+    "ECHOCARDIOGRAPHY: Bedside TTE for hemodynamically unstable patients to assess RV function and exclude alternative diagnoses",
+    "TROPONIN AND BNP: Elevated troponin or BNP indicates RV strain — intermediate-high risk category; consider ICU monitoring",
+    "POST-PE FOLLOW-UP: Repeat echocardiography at 3-6 months; evaluate for chronic thromboembolic pulmonary hypertension (CTEPH) if persistent dyspnea",
+    "DVT WORKUP: Bilateral lower extremity compression ultrasound if CTPA non-diagnostic or radiation concern"
+  ],
+  "icd10_codes": ["I26.09", "I26.99", "I26.90", "I26.01", "I82.401"],
+  "keywords": ["pulmonary embolism", "PE", "DVT", "deep vein thrombosis", "anticoagulation", "rivaroxaban", "apixaban", "thrombolysis", "alteplase", "Wells score", "D-dimer", "CTPA", "right ventricular dysfunction", "VTE"]
+}

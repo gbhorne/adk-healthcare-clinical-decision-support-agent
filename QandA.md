@@ -192,6 +192,6 @@ Not currently. The pipeline is designed for sequential execution from the ADK De
 
 ---
 
-**Q: What's the recommended order to add the missing protocol documents to Vertex AI Search?**
+**Q: What's the status of the protocol corpus? Are all patients covered?**
 
-Priority order based on patient coverage gaps and clinical acuity: (1) Pulmonary Embolism; Sofia Reyes is the clearest 0-match case and PE is high-stakes. (2) Acute Ischemic Stroke; David Conrad matched via NSTEMI doc which is semantically loose. (3) Diabetic Ketoacidosis; Amara Osei matched via CKD/Diabetes doc but a dedicated DKA protocol would be more precise. (4) Postpartum Hemorrhage; Charlotte Blandy matched via DIC doc and a PPH-specific protocol would be far more relevant. (5) COPD Exacerbation, Febrile Seizure, Acute Liver Failure; lower urgency.
+As of the March 2026 update, the corpus is complete — 10 protocol documents covering all 10 synthetic patient scenarios. Sepsis (SSC 2021), NSTEMI (ACC/AHA 2022), CKD+Diabetes (KDIGO/ADA 2022), Pulmonary Embolism (ESC 2019), Acute Ischemic Stroke (AHA/ASA 2019), Diabetic Ketoacidosis (ADA), COPD Exacerbation (GOLD 2023), Postpartum Hemorrhage (ACOG 2017), Febrile Seizure (AAP 2011), and Acute Liver Failure (AASLD 2011). Load all 10 via `scripts/setup_vertex_search.py`. Sofia Reyes (PE) and Peter Rolle (febrile seizure) previously returned 0 protocol matches; they will now match correctly once the new documents are indexed.

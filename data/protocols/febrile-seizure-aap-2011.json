@@ -1,0 +1,25 @@
+{
+  "id": "protocol-febrile-seizure-aap-2011",
+  "title": "AAP Clinical Practice Guideline: Febrile Seizures — Neurodiagnostic Evaluation and Long-Term Management",
+  "source": "American Academy of Pediatrics (AAP)",
+  "evidence_level": "Grade B Strong Recommendation",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/febrile-seizure-aap-2011.json",
+  "description": "Evidence-based guidelines for the evaluation and management of simple and complex febrile seizures in children aged 6 months to 5 years, including LP indications, neuroimaging, EEG, and recurrence counseling.",
+  "recommendations": [
+    "SIMPLE FEBRILE SEIZURE DEFINITION: Single seizure lasting <15 minutes, generalized (not focal), occurring in child 6 months to 5 years with fever >=38°C, no CNS infection, no prior afebrile seizure, returns to baseline within 1 hour",
+    "COMPLEX FEBRILE SEIZURE: Focal features, duration >15 minutes, or multiple seizures within 24 hours — requires more extensive evaluation",
+    "LUMBAR PUNCTURE: NOT routinely indicated for simple febrile seizure in fully immunized child; consider LP if meningeal signs present, prolonged post-ictal state, complex febrile seizure, age <12 months (especially if pre-vaccination era), or pre-treated with antibiotics",
+    "NEUROIMAGING: CT or MRI NOT routinely indicated for simple febrile seizure; obtain if focal neurological deficit, increased ICP signs, complex febrile seizure, or failure to return to baseline",
+    "EEG: NOT recommended for simple febrile seizure — does not predict recurrence or future epilepsy risk",
+    "BLOOD TESTS: Serum glucose, electrolytes, CBC NOT routinely indicated unless clinical concern for metabolic cause or dehydration; obtain if ill-appearing child",
+    "FEVER MANAGEMENT: Antipyretics (acetaminophen or ibuprofen) for comfort — do NOT prevent febrile seizure recurrence; do not use prophylactically",
+    "ACTIVE SEIZURE MANAGEMENT: Benzodiazepine (lorazepam 0.1 mg/kg IV or diazepam 0.5 mg/kg PR) if seizure lasting >5 minutes or second seizure occurs",
+    "RECURRENCE RISK: 30-35% overall recurrence risk; highest if age <18 months, temperature <40°C at first seizure, short duration of fever before seizure, family history of febrile seizures",
+    "EPILEPSY RISK: Simple febrile seizure carries <2% lifetime risk of developing epilepsy — only slightly above general population baseline (1%); complex febrile seizure risk 4-6%",
+    "PROPHYLACTIC ANTICONVULSANTS: NOT recommended for simple febrile seizures — risks outweigh benefits; consider intermittent diazepam for high-recurrence-risk families if significant parental anxiety",
+    "DISCHARGE CRITERIA: Seizure terminated, child returned to neurological baseline, fever source identified, no signs of meningitis or encephalitis, adequate parental education",
+    "PARENTAL COUNSELING: Reassure that simple febrile seizures do not cause brain damage; educate on seizure first aid — position child safely, time seizure, call EMS if >5 minutes"
+  ],
+  "icd10_codes": ["R56.00", "R56.01", "R56.09"],
+  "keywords": ["febrile seizure", "pediatric seizure", "fever", "convulsion", "meningitis", "lumbar puncture", "benzodiazepine", "lorazepam", "diazepam", "recurrence", "epilepsy", "child", "pediatric", "AAP"]
+}

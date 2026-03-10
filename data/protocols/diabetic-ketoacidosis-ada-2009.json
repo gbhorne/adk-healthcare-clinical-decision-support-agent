@@ -1,0 +1,26 @@
+{
+  "id": "protocol-diabetic-ketoacidosis-ada-2009",
+  "title": "ADA Consensus Statement: Diabetic Ketoacidosis and Hyperglycemic Hyperosmolar State in Adults",
+  "source": "American Diabetes Association (ADA)",
+  "evidence_level": "Expert Consensus / Grade B",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/diabetic-ketoacidosis-ada-2009.json",
+  "description": "Evidence-based management of diabetic ketoacidosis (DKA) in adults including fluid resuscitation, insulin therapy, electrolyte replacement, bicarbonate use, and transition to subcutaneous insulin.",
+  "recommendations": [
+    "DKA DIAGNOSIS CRITERIA: Glucose >250 mg/dL, arterial pH <7.3, serum bicarbonate <18 mEq/L, positive urine or serum ketones, anion gap >12",
+    "FLUID RESUSCITATION: 1-1.5L normal saline (0.9% NaCl) IV in first hour; subsequent rate 250-500 mL/hr; switch to 0.45% NaCl once glucose <250 mg/dL",
+    "INSULIN THERAPY: Do NOT start insulin until potassium >=3.5 mEq/L; begin 0.1 units/kg/hr regular insulin infusion; reduce to 0.05 units/kg/hr when glucose reaches 200 mg/dL",
+    "POTASSIUM REPLACEMENT: Add 20-40 mEq/L KCl to IV fluids if potassium 3.5-5.0 mEq/L; replace aggressively if K+ <3.5 — hold insulin and replace first",
+    "GLUCOSE IN IV FLUIDS: Add dextrose (5% or 10%) to IV fluids when glucose <200 mg/dL to allow continued insulin infusion and ketone clearance",
+    "BICARBONATE: NOT routinely recommended; consider only if pH <6.9 — may worsen hypokalemia and impair cerebral oxygen delivery",
+    "PHOSPHATE REPLACEMENT: Replace if phosphate <1 mg/dL or if cardiac dysfunction, hemolytic anemia, or respiratory depression present",
+    "ANION GAP MONITORING: Check glucose, electrolytes, and anion gap every 2-4 hours; DKA resolution requires anion gap <12 and bicarbonate >=18",
+    "TRANSITION TO SUBCUTANEOUS INSULIN: When patient tolerating oral intake, anion gap closed, and bicarbonate >=18 — overlap subcutaneous basal insulin by 2 hours before stopping infusion",
+    "PRECIPITATING CAUSE: Identify and treat trigger — infection (most common), insulin non-compliance, new-onset T1DM, medications (SGLT2 inhibitors), myocardial infarction",
+    "CEREBRAL EDEMA: Most common in pediatric DKA; risk factors include bicarbonate use and rapid fluid correction; treat with mannitol 0.5-1 g/kg IV",
+    "EUGLYCEMIC DKA: SGLT2 inhibitor-induced DKA — glucose may be normal or mildly elevated; check ketones in any patient on SGLT2 inhibitor with nausea or vomiting",
+    "CARDIAC MONITORING: Continuous telemetry during insulin and potassium infusion — hypokalemia and hyperkalemia both cause life-threatening dysrhythmias",
+    "ICU CRITERIA: pH <7.0, altered mental status, hemodynamic instability, or K+ <3.0 warrant ICU-level monitoring"
+  ],
+  "icd10_codes": ["E11.10", "E11.11", "E10.10", "E10.11", "E13.10"],
+  "keywords": ["diabetic ketoacidosis", "DKA", "hyperglycemia", "ketones", "anion gap", "insulin infusion", "potassium replacement", "Kussmaul breathing", "euglycemic DKA", "SGLT2", "fluid resuscitation", "type 1 diabetes", "type 2 diabetes"]
+}

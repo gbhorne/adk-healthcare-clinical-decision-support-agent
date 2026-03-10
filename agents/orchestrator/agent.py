@@ -73,40 +73,11 @@ def _apply_dlp_full(text: str, session_id: str) -> tuple[str, DLPAuditRecord]:
     """Apply full 18-identifier DLP pseudonymization to summary text."""
     try:
         dlp_client = dlp_v2.DlpServiceClient()
-        parent = f"projects/{config.project_id}/locations/{config.location}"
 
-        info_types = [
-            {"name": "PERSON_NAME"}, {"name": "DATE_OF_BIRTH"},
-            {"name": "US_SOCIAL_SECURITY_NUMBER"}, {"name": "PHONE_NUMBER"},
-            {"name": "EMAIL_ADDRESS"}, {"name": "STREET_ADDRESS"},
-            {"name": "MEDICAL_RECORD_NUMBER"}, {"name": "US_HEALTHCARE_NPI"},
-            {"name": "AGE"}, {"name": "DATE"}, {"name": "IP_ADDRESS"},
-            {"name": "URL"}, {"name": "CREDIT_CARD_NUMBER"},
-            {"name": "US_BANK_ROUTING_MICR"}, {"name": "US_DRIVERS_LICENSE_NUMBER"},
-            {"name": "US_PASSPORT"}, {"name": "VEHICLE_IDENTIFICATION_NUMBER"},
-            {"name": "US_DEA_NUMBER"},
-        ]
-        deidentify_config = {
-            "info_type_transformations": {
-                "transformations": [{
-                    "primitive_transformation": {"replace_with_info_type_config": {}}
-                }]
-            }
-        }
-        inspect_config = {
-            "info_types": info_types,
-            "min_likelihood": dlp_v2.Likelihood.LIKELY,
-            "include_quote": False,
-        }
-
-        response = dlp_client.deidentify_content(
-            request={
-                "parent": parent,
-                "deidentify_config": deidentify_config,
-                "inspect_config": inspect_config,
-                "item": {"value": text},
-            }
-        )
+        # Use named DLP templates when configured; inline config as fallback.
+        # Run scripts/setup_dlp_templates.py to create templates, then set
+        # DLP_INSPECT_TEMPLATE and DLP_DEIDENTIFY_TEMPLATE in .env.
+        response = dlp_client.deidentify_content(request=_build_dlp_request(text))
 
         findings_by_type: dict[str, int] = {}
         # FIX F-DLP4: Use transformed_count consistently.
@@ -273,6 +244,51 @@ def _write_session_to_bigquery(summary: CDSSummary) -> None:
 
 
 # ── ADK Tool Function ─────────────────────────────────────────────────────────
+
+def _build_dlp_request(text: str) -> dict:
+    """
+    Build a DLP deidentify_content request dict.
+
+    Uses named DLP templates (DLP_INSPECT_TEMPLATE / DLP_DEIDENTIFY_TEMPLATE)
+    when configured in .env. Falls back to inline config for local development.
+    Run scripts/setup_dlp_templates.py to create named templates.
+    """
+    item = {"value": text}
+    if config.dlp_inspect_template and config.dlp_deidentify_template:
+        return {
+            "parent": f"projects/{config.project_id}/locations/global",
+            "inspect_template_name": config.dlp_inspect_template,
+            "deidentify_template_name": config.dlp_deidentify_template,
+            "item": item,
+        }
+    info_types = [
+        {"name": "PERSON_NAME"}, {"name": "DATE_OF_BIRTH"},
+        {"name": "US_SOCIAL_SECURITY_NUMBER"}, {"name": "PHONE_NUMBER"},
+        {"name": "EMAIL_ADDRESS"}, {"name": "STREET_ADDRESS"},
+        {"name": "MEDICAL_RECORD_NUMBER"}, {"name": "US_HEALTHCARE_NPI"},
+        {"name": "AGE"}, {"name": "DATE"}, {"name": "IP_ADDRESS"},
+        {"name": "URL"}, {"name": "CREDIT_CARD_NUMBER"},
+        {"name": "US_BANK_ROUTING_MICR"}, {"name": "US_DRIVERS_LICENSE_NUMBER"},
+        {"name": "US_PASSPORT"}, {"name": "VEHICLE_IDENTIFICATION_NUMBER"},
+        {"name": "US_DEA_NUMBER"},
+    ]
+    return {
+        "parent": f"projects/{config.project_id}/locations/{config.location}",
+        "deidentify_config": {
+            "info_type_transformations": {
+                "transformations": [
+                    {"primitive_transformation": {"replace_with_info_type_config": {}}}
+                ]
+            }
+        },
+        "inspect_config": {
+            "info_types": info_types,
+            "min_likelihood": dlp_v2.Likelihood.LIKELY,
+            "include_quote": False,
+        },
+        "item": item,
+    }
+
 
 def run_orchestrator(session_id: Optional[str] = None) -> dict:
     """

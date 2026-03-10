@@ -54,6 +54,63 @@ vertexai.init(project=config.project_id, location=config.location)
 
 # ── DLP Helpers ───────────────────────────────────────────────────────────────
 
+
+def _build_dlp_request(text: str) -> dict:
+    """
+    Build a DLP deidentify_content request dict.
+
+    When DLP_INSPECT_TEMPLATE and DLP_DEIDENTIFY_TEMPLATE are set in .env,
+    the request uses named templates (versioned, auditable, centrally managed).
+    When they are not set, falls back to inline config so local development
+    works without GCP template provisioning.
+
+    Run scripts/setup_dlp_templates.py once to create the named templates, then
+    set the resource names in .env to activate this path.
+    """
+    item = {"value": text}
+
+    if config.dlp_inspect_template and config.dlp_deidentify_template:
+        # Named template path — preferred in deployed environments
+        return {
+            "parent": f"projects/{config.project_id}/locations/global",
+            "inspect_template_name": config.dlp_inspect_template,
+            "deidentify_template_name": config.dlp_deidentify_template,
+            "item": item,
+        }
+
+    # Inline config fallback — used when templates are not yet provisioned
+    info_types = [
+        {"name": "PERSON_NAME"},
+        {"name": "DATE_OF_BIRTH"},
+        {"name": "DATE"},
+        {"name": "AGE"},
+        {"name": "US_SOCIAL_SECURITY_NUMBER"},
+        {"name": "MEDICAL_RECORD_NUMBER"},
+        {"name": "PHONE_NUMBER"},
+        {"name": "EMAIL_ADDRESS"},
+        {"name": "STREET_ADDRESS"},
+        {"name": "LOCATION"},
+        {"name": "US_HEALTHCARE_NPI"},
+        {"name": "IP_ADDRESS"},
+        {"name": "URL"},
+    ]
+    return {
+        "parent": f"projects/{config.project_id}/locations/{config.location}",
+        "deidentify_config": {
+            "info_type_transformations": {
+                "transformations": [
+                    {"primitive_transformation": {"replace_with_info_type_config": {}}}
+                ]
+            }
+        },
+        "inspect_config": {
+            "info_types": info_types,
+            "min_likelihood": dlp_v2.Likelihood.LIKELY,
+            "include_quote": False,
+        },
+        "item": item,
+    }
+
 def _apply_dlp_to_text(text: str, session_id: str) -> tuple[str, DLPAuditRecord]:
     """
     Inspect text for PHI and apply pseudonymization via Cloud DLP.
@@ -61,53 +118,11 @@ def _apply_dlp_to_text(text: str, session_id: str) -> tuple[str, DLPAuditRecord]
     Never logs or persists the original PHI values.
     """
     dlp_client = dlp_v2.DlpServiceClient()
-    parent = f"projects/{config.project_id}/locations/{config.location}"
 
-    # Define the 18 HIPAA identifiers to inspect for
-    info_types = [
-        {"name": "PERSON_NAME"},
-        {"name": "DATE_OF_BIRTH"},
-        {"name": "US_SOCIAL_SECURITY_NUMBER"},
-        {"name": "PHONE_NUMBER"},
-        {"name": "EMAIL_ADDRESS"},
-        {"name": "STREET_ADDRESS"},
-        {"name": "MEDICAL_RECORD_NUMBER"},
-        {"name": "US_HEALTHCARE_NPI"},
-        {"name": "AGE"},
-        {"name": "DATE"},
-        {"name": "IP_ADDRESS"},
-        {"name": "URL"},
-    ]
-
-    # Deidentify config — replace PHI with info_type tokens
-    deidentify_config = {
-        "info_type_transformations": {
-            "transformations": [
-                {
-                    "primitive_transformation": {
-                        "replace_with_info_type_config": {}
-                    }
-                }
-            ]
-        }
-    }
-
-    inspect_config = {
-        "info_types": info_types,
-        "min_likelihood": dlp_v2.Likelihood.LIKELY,
-        "include_quote": False,  # Never include actual PHI values in findings
-    }
-
-    item = {"value": text}
-
-    response = dlp_client.deidentify_content(
-        request={
-            "parent": parent,
-            "deidentify_config": deidentify_config,
-            "inspect_config": inspect_config,
-            "item": item,
-        }
-    )
+    # Use named DLP templates when configured; inline config as fallback.
+    # Run scripts/setup_dlp_templates.py to create templates, then set
+    # DLP_INSPECT_TEMPLATE and DLP_DEIDENTIFY_TEMPLATE in .env.
+    response = dlp_client.deidentify_content(request=_build_dlp_request(text))
 
     # FIX F-DLP4: Use transformed_count consistently across all agents.
     findings_by_type: dict[str, int] = {}

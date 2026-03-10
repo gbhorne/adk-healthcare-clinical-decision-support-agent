@@ -1,0 +1,26 @@
+{
+  "id": "protocol-acute-liver-failure-aasld-2011",
+  "title": "AASLD Position Paper: The Management of Acute Liver Failure — Update 2011",
+  "source": "American Association for the Study of Liver Diseases (AASLD)",
+  "evidence_level": "Level II-2 / Expert Consensus",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/acute-liver-failure-aasld-2011.json",
+  "description": "Comprehensive management guidelines for acute liver failure (ALF), including etiology-specific therapy, N-acetylcysteine for acetaminophen toxicity, coagulopathy management, hepatic encephalopathy, cerebral edema, and liver transplant criteria.",
+  "recommendations": [
+    "ALF DEFINITION: Severe acute liver injury with coagulopathy (INR >=1.5) and any degree of hepatic encephalopathy in a patient without pre-existing liver disease",
+    "ACETAMINOPHEN TOXICITY: N-acetylcysteine (NAC) is the antidote — 150 mg/kg IV loading dose over 15-60 minutes, then 50 mg/kg over 4 hours, then 100 mg/kg over 16 hours; initiate regardless of acetaminophen level if ingestion suspected within 24 hours",
+    "NAC FOR NON-ACETAMINOPHEN ALF: IV NAC improves transplant-free survival in early-stage non-acetaminophen ALF (Grade I-II encephalopathy) — recommended by AASLD",
+    "ACETAMINOPHEN OVERDOSE THRESHOLD: Rumack-Matthew nomogram — initiate NAC if acetaminophen level above treatment line; treat empirically if time of ingestion unknown",
+    "COAGULOPATHY: Do NOT correct INR with FFP unless active bleeding or invasive procedure planned — INR is a prognostic marker; routine FFP transfusion may mask disease progression",
+    "HEPATIC ENCEPHALOPATHY: Lactulose NOT shown to benefit ALF (differs from chronic liver disease); rifaximin adjunctive; avoid sedation; continuous EEG if Grade III-IV encephalopathy",
+    "CEREBRAL EDEMA: Occurs in up to 80% of Grade IV ALF; osmotherapy with mannitol 0.5-1 g/kg IV bolus for ICP >25 mmHg; hypertonic saline (NaCl 3-30%) for refractory elevation; target serum sodium 145-155 mEq/L",
+    "ICP MONITORING: Consider for Grade III-IV encephalopathy in transplant candidates; risks include hemorrhage into coagulopathic patients",
+    "RENAL REPLACEMENT THERAPY: Continuous RRT preferred over intermittent hemodialysis for ALF with renal failure — better hemodynamic tolerance and ICP control",
+    "INFECTION: Daily surveillance cultures; low threshold for empiric antibiotics in deteriorating patients — ALF patients are profoundly immunosuppressed; antifungal prophylaxis in severe cases",
+    "LIVER TRANSPLANT CRITERIA (King's College): Acetaminophen: arterial pH <7.3 after resuscitation OR all three of INR >6.5, creatinine >3.4 mg/dL, Grade III-IV encephalopathy; Non-acetaminophen: INR >6.5 alone OR any three of age <10 or >40, non-A non-B hepatitis or drug-induced etiology, jaundice >7 days before encephalopathy, INR >3.5, bilirubin >17.5 mg/dL",
+    "GLYCEMIC CONTROL: Hypoglycemia common due to hepatic gluconeogenesis failure — check glucose every 1-2 hours; maintain glucose 80-160 mg/dL with dextrose infusion",
+    "VASOPRESSORS: Norepinephrine first-line for hemodynamic instability; relative adrenal insufficiency common in ALF — consider hydrocortisone if vasopressor-refractory hypotension",
+    "TRANSFER TO TRANSPLANT CENTER: Transfer immediately upon ALF diagnosis — do not wait for clinical deterioration; prognosis changes rapidly"
+  ],
+  "icd10_codes": ["K72.00", "K72.01", "K71.10", "K71.11", "T39.1X1A"],
+  "keywords": ["acute liver failure", "ALF", "acetaminophen", "paracetamol", "N-acetylcysteine", "NAC", "hepatic encephalopathy", "cerebral edema", "INR", "coagulopathy", "liver transplant", "King's College criteria", "fulminant hepatic failure", "jaundice"]
+}

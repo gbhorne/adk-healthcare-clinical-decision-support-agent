@@ -1,0 +1,26 @@
+{
+  "id": "protocol-acute-ischemic-stroke-aha-2019",
+  "title": "AHA/ASA 2019 Guidelines for the Early Management of Patients with Acute Ischemic Stroke",
+  "source": "American Heart Association (AHA) / American Stroke Association (ASA)",
+  "evidence_level": "Class I, Level A",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/acute-ischemic-stroke-aha-2019.json",
+  "description": "Comprehensive guidelines for hyperacute stroke evaluation, IV alteplase eligibility, mechanical thrombectomy, blood pressure management, and secondary prevention in acute ischemic stroke.",
+  "recommendations": [
+    "TIME IS BRAIN: Door-to-needle time target <60 minutes; door-to-groin puncture target <90 minutes for thrombectomy",
+    "STROKE CODE ACTIVATION: Immediate CT head without contrast to exclude hemorrhage before any thrombolytic therapy",
+    "IV ALTEPLASE ELIGIBILITY: Administer within 4.5 hours of symptom onset (or last known well) if no contraindications; 0.9 mg/kg IV, max 90mg, 10% bolus then 60-minute infusion",
+    "ALTEPLASE CONTRAINDICATIONS: Active intracranial hemorrhage, major surgery within 14 days, BP >185/110 despite treatment, INR >1.7, platelet count <100,000, blood glucose <50 or >400 mg/dL",
+    "BLOOD PRESSURE MANAGEMENT: Lower BP to <185/110 before alteplase; after alteplase maintain <180/105 for 24 hours; for no-thrombolysis patients tolerate up to 220/120 for first 24 hours",
+    "MECHANICAL THROMBECTOMY: Indicated for large vessel occlusion (ICA, M1, M2 segments) within 24 hours of onset with favorable imaging profile (ASPECTS score >=6)",
+    "THROMBECTOMY IMAGING: CT angiography or MR angiography to confirm large vessel occlusion; CT perfusion or MRI DWI/FLAIR mismatch for extended window (6-24 hours)",
+    "ANTIPLATELET THERAPY: Aspirin 325mg within 24-48 hours of onset (delay 24 hours after alteplase); dual antiplatelet (aspirin + clopidogrel) for minor stroke or high-risk TIA for 21 days",
+    "ATRIAL FIBRILLATION: Anticoagulation for cardioembolic stroke — start 4-14 days after onset depending on infarct size and hemorrhagic transformation risk",
+    "STATIN THERAPY: High-intensity statin (atorvastatin 80mg) for all ischemic stroke regardless of baseline LDL",
+    "GLYCEMIC CONTROL: Treat hyperglycemia >180 mg/dL; avoid hypoglycemia; target glucose 140-180 mg/dL in acute phase",
+    "SWALLOWING SCREEN: Formal dysphagia screen before oral intake — aspiration precautions if impaired",
+    "TEMPERATURE: Treat fever (>37.5°C) aggressively — fever worsens penumbra; acetaminophen first-line",
+    "STROKE UNIT CARE: Admission to dedicated stroke unit reduces mortality and disability by 20-25% versus general medical ward"
+  ],
+  "icd10_codes": ["I63.9", "I63.5", "I63.4", "I63.3", "I63.0", "G45.9"],
+  "keywords": ["ischemic stroke", "acute stroke", "alteplase", "tPA", "thrombolysis", "thrombectomy", "large vessel occlusion", "atrial fibrillation", "aphasia", "hemiplegia", "NIHSS", "last known well", "door to needle", "ASPECTS"]
+}

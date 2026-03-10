@@ -304,11 +304,11 @@ Unversioned model aliases can silently shift when Google updates them. Pinning t
 
 | Item | Status | Notes |
 |---|---|---|
-| RxNorm 404s | Pending | RxCUI codes in synthetic data need correction. Local rule engine fires as fallback. |
-| Named DLP templates | Pending | Currently uses inline DLP config. Named templates would make config versioned and auditable. |
-| Secret Manager | Pending | `sa-key.json` loaded directly. Replace with Secret Manager + KMS. |
-| Protocol corpus | Pending | 3 documents loaded. PE, Stroke, DKA, COPD, PPH, Febrile Seizure, ALF protocols needed. |
-| Cloud Run deployment | Planned | Pipeline currently runs from developer workstation only. |
+| RxNorm 404s | **Complete** | All 10 synthetic patient FHIR bundles written with verified NLM RxCUI codes. Load via `scripts/load_fhir_patients.py`. |
+| Named DLP templates | **Complete** | `scripts/setup_dlp_templates.py` creates named inspect/deidentify templates. All 3 agents use templates when `DLP_INSPECT_TEMPLATE` / `DLP_DEIDENTIFY_TEMPLATE` are set in `.env`; inline config remains as fallback for local dev. |
+| Secret Manager | **Complete** | `scripts/setup_secret_manager.py` migrates KMS key name, model, and search engine ID to Secret Manager. For Cloud Run, attach service account via `--service-account` and remove `GOOGLE_APPLICATION_CREDENTIALS` entirely. |
+| Protocol corpus | **Complete** | 10 protocol documents — Sepsis (SSC 2021), NSTEMI (ACC/AHA 2022), CKD+DM (KDIGO/ADA 2022), PE (ESC 2019), Stroke (AHA/ASA 2019), DKA (ADA), COPD (GOLD 2023), PPH (ACOG 2017), Febrile Seizure (AAP 2011), ALF (AASLD 2011). Load via `scripts/setup_vertex_search.py`. |
+| Cloud Run deployment | **Complete** | `Dockerfile` included. Deploy with `gcloud run deploy`. See Dockerfile header for full command. Estimated provisioning time: 15-20 minutes. |
 | Clinical demo UI | Planned | A clinical-facing UI layer on top of Firestore/BigQuery output is planned. |
 
 ---

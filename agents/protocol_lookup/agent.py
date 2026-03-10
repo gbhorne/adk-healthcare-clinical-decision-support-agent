@@ -53,11 +53,22 @@ DISCOVERY_ENGINE_LOCATION = "global"
 
 # ── DLP Helper ────────────────────────────────────────────────────────────────
 
-def _apply_dlp(text: str, session_id: str) -> tuple[str, DLPAuditRecord]:
-    """Apply DLP pseudonymization to search summary text."""
-    dlp_client = dlp_v2.DlpServiceClient()
-    parent = f"projects/{config.project_id}/locations/{config.location}"
+def _build_dlp_request(text: str) -> dict:
+    """
+    Build a DLP deidentify_content request dict.
 
+    Uses named DLP templates (DLP_INSPECT_TEMPLATE / DLP_DEIDENTIFY_TEMPLATE)
+    when configured in .env. Falls back to inline config for local development.
+    Run scripts/setup_dlp_templates.py to create named templates.
+    """
+    item = {"value": text}
+    if config.dlp_inspect_template and config.dlp_deidentify_template:
+        return {
+            "parent": f"projects/{config.project_id}/locations/global",
+            "inspect_template_name": config.dlp_inspect_template,
+            "deidentify_template_name": config.dlp_deidentify_template,
+            "item": item,
+        }
     info_types = [
         {"name": "PERSON_NAME"},
         {"name": "DATE_OF_BIRTH"},
@@ -69,33 +80,32 @@ def _apply_dlp(text: str, session_id: str) -> tuple[str, DLPAuditRecord]:
         {"name": "AGE"},
         {"name": "DATE"},
     ]
-
-    deidentify_config = {
-        "info_type_transformations": {
-            "transformations": [
-                {
-                    "primitive_transformation": {
-                        "replace_with_info_type_config": {}
-                    }
-                }
-            ]
-        }
+    return {
+        "parent": f"projects/{config.project_id}/locations/{config.location}",
+        "deidentify_config": {
+            "info_type_transformations": {
+                "transformations": [
+                    {"primitive_transformation": {"replace_with_info_type_config": {}}}
+                ]
+            }
+        },
+        "inspect_config": {
+            "info_types": info_types,
+            "min_likelihood": dlp_v2.Likelihood.LIKELY,
+            "include_quote": False,
+        },
+        "item": item,
     }
 
-    inspect_config = {
-        "info_types": info_types,
-        "min_likelihood": dlp_v2.Likelihood.LIKELY,
-        "include_quote": False,
-    }
 
-    response = dlp_client.deidentify_content(
-        request={
-            "parent": parent,
-            "deidentify_config": deidentify_config,
-            "inspect_config": inspect_config,
-            "item": {"value": text},
-        }
-    )
+def _apply_dlp(text: str, session_id: str) -> tuple[str, DLPAuditRecord]:
+    """Apply DLP pseudonymization to search summary text."""
+    dlp_client = dlp_v2.DlpServiceClient()
+
+    # Use named DLP templates when configured; inline config as fallback.
+    # Run scripts/setup_dlp_templates.py to create templates, then set
+    # DLP_INSPECT_TEMPLATE and DLP_DEIDENTIFY_TEMPLATE in .env.
+    response = dlp_client.deidentify_content(request=_build_dlp_request(text))
 
     # FIX F-DLP4: Use transformed_count (total transformation operations)
     # consistently across all agents. Other agents were using len(summary.results)

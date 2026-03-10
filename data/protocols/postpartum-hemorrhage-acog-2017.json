@@ -1,0 +1,26 @@
+{
+  "id": "protocol-postpartum-hemorrhage-acog-2017",
+  "title": "ACOG Practice Bulletin 183: Postpartum Hemorrhage",
+  "source": "American College of Obstetricians and Gynecologists (ACOG)",
+  "evidence_level": "Level A — Good and Consistent Evidence",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/postpartum-hemorrhage-acog-2017.json",
+  "description": "Evidence-based management of postpartum hemorrhage (PPH) including uterotonic therapy, surgical interventions, transfusion protocols, and management of consumptive coagulopathy.",
+  "recommendations": [
+    "PPH DEFINITION: Blood loss >=1000 mL within 24 hours of delivery OR blood loss associated with signs or symptoms of hypovolemia",
+    "UTERINE ATONY (most common cause, 80% of PPH): Bimanual uterine massage plus oxytocin 10-40 units in 500-1000 mL NS at 100-150 mL/hr IV",
+    "SECOND-LINE UTEROTONICS: Methylergonovine 0.2mg IM (contraindicated in hypertension); carboprost (15-methyl PGF2-alpha) 250mcg IM every 15-90 min, max 8 doses (contraindicated in asthma); misoprostol 800-1000mcg sublingual or rectal",
+    "TRANEXAMIC ACID: 1g IV over 10-20 minutes within 3 hours of hemorrhage onset — reduces PPH mortality by 30%; repeat 1g if bleeding continues at 30 minutes",
+    "MASSIVE TRANSFUSION PROTOCOL: Activate at EBL >1500 mL or ongoing hemorrhage; target 1:1:1 ratio of packed red blood cells to fresh frozen plasma to platelets",
+    "FIBRINOGEN REPLACEMENT: Give cryoprecipitate or fibrinogen concentrate if fibrinogen <200 mg/dL — fibrinogen is consumed early in obstetric hemorrhage",
+    "BALLOON TAMPONADE: Intrauterine balloon (Bakri balloon) with 300-500 mL saline fill for refractory atony after uterotonics — test for ongoing bleeding before surgical escalation",
+    "UTERINE COMPRESSION SUTURES: B-Lynch or Hayman suture for refractory atony when uterus responds to bimanual compression",
+    "UTERINE ARTERY EMBOLIZATION: Interventional radiology option for hemodynamically stable patients with refractory hemorrhage when fertility preservation desired",
+    "HYSTERECTOMY: Definitive treatment for refractory PPH when all conservative measures fail — do not delay to avoid mortality",
+    "COAGULOPATHY MANAGEMENT: Point-of-care testing (TEG or ROTEM) guides product replacement in real-time; treat DIC aggressively with FFP, cryoprecipitate, and platelets",
+    "CALCIUM: Administer calcium gluconate 1g IV with every 4 units of packed red blood cells to prevent citrate-induced hypocalcemia during massive transfusion",
+    "TEMPERATURE AND ACIDOSIS: Maintain temperature >36°C and pH >7.2 — hypothermia and acidosis worsen coagulopathy (lethal triad with hypovolemia)",
+    "CAUSE IDENTIFICATION: 4 Ts — Tone (atony), Trauma (lacerations, hematoma), Tissue (retained placenta), Thrombin (coagulopathy)"
+  ],
+  "icd10_codes": ["O72.1", "O72.0", "O72.2", "O72.3", "O67.0"],
+  "keywords": ["postpartum hemorrhage", "PPH", "uterine atony", "oxytocin", "methylergonovine", "carboprost", "misoprostol", "tranexamic acid", "massive transfusion", "DIC", "Bakri balloon", "hysterectomy", "obstetric hemorrhage", "EBL"]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "protocol-copd-exacerbation-gold-2023",
+  "title": "GOLD 2023 Report: Global Strategy for Prevention, Diagnosis and Management of COPD — Acute Exacerbation Chapter",
+  "source": "Global Initiative for Chronic Obstructive Lung Disease (GOLD)",
+  "evidence_level": "Grade A/B Evidence",
+  "uri": "gs://cdss-data-{PROJECT_ID}/protocols/copd-exacerbation-gold-2023.json",
+  "description": "Evidence-based management of acute exacerbations of COPD (AECOPD) including bronchodilator therapy, systemic corticosteroids, antibiotic selection, controlled oxygen therapy, NIV, and discharge criteria.",
+  "recommendations": [
+    "CONTROLLED OXYGEN: Target SpO2 88-92% in COPD exacerbation — avoid over-oxygenation which suppresses hypoxic drive and worsens hypercapnia",
+    "SHORT-ACTING BRONCHODILATORS: Salbutamol (albuterol) 2.5mg nebulized every 20 minutes x 3 doses, then every 1-4 hours; add ipratropium 0.5mg nebulized every 6 hours",
+    "SYSTEMIC CORTICOSTEROIDS: Prednisolone 40mg orally daily x 5 days (equivalent to IV methylprednisolone); reduces treatment failure and length of stay",
+    "ANTIBIOTICS: Indicated when sputum is purulent (increased volume and purulence); amoxicillin-clavulanate or doxycycline for outpatient; azithromycin or levofloxacin for hospitalized; anti-pseudomonal coverage if risk factors",
+    "PSEUDOMONAL RISK FACTORS: Frequent exacerbations (>=4/year), prior Pseudomonas isolation, FEV1 <30% predicted, recent hospitalization — use piperacillin-tazobactam or ciprofloxacin",
+    "NON-INVASIVE VENTILATION (NIV): BiPAP indicated for pH <7.35 and PaCO2 >45 mmHg; reduces need for intubation and in-hospital mortality",
+    "INTUBATION CRITERIA: NIV failure, severe acidosis (pH <7.25), hemodynamic instability, decreased consciousness, inability to protect airway",
+    "METHYLXANTHINES: Theophylline NOT recommended in acute exacerbation — no added benefit and significant toxicity risk",
+    "SPUTUM CULTURE: Obtain before antibiotics if hospitalized, especially if purulent or ICU admission anticipated",
+    "CHEST RADIOGRAPH: Obtain to exclude pneumonia, pneumothorax, and pleural effusion as alternative or complicating diagnoses",
+    "ABG MONITORING: Arterial blood gas at presentation and 1-2 hours after initiating oxygen or NIV to assess response and guide ventilatory support",
+    "VENOUS THROMBOEMBOLISM PROPHYLAXIS: LMWH or unfractionated heparin for all hospitalized COPD exacerbations — high VTE risk during acute illness",
+    "DISCHARGE CRITERIA: SpO2 stable on baseline oxygen, able to use inhaler independently, no need for parenteral bronchodilators >4 hours, walking ability, adequate home support",
+    "PULMONARY REHABILITATION: Begin within 4 weeks of discharge — reduces re-hospitalization and mortality"
+  ],
+  "icd10_codes": ["J44.1", "J44.0", "J44.9", "J18.9"],
+  "keywords": ["COPD", "chronic obstructive pulmonary disease", "acute exacerbation", "AECOPD", "bronchodilator", "corticosteroids", "NIV", "BiPAP", "hypercapnia", "purulent sputum", "pneumonia", "controlled oxygen", "albuterol", "ipratropium"]
+}
